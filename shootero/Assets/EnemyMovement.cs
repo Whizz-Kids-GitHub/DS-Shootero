@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
             targetSpot.transform.position = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(4f);
         } while (true);
 
     }

@@ -10,6 +10,7 @@ public class EnemyShootingBurst : MonoBehaviour
     public float timeBetweenBursts;
     public float force;
     public float recoilRange;
+    public GameObject firePoint;
 
     private void Start()
     {
@@ -29,11 +30,15 @@ public class EnemyShootingBurst : MonoBehaviour
         {
             for (int i = 0; i <= burstLength; i++)
             {
-                Quaternion recoil = new Quaternion(0, 0, transform.rotation.z - Random.Range(-recoilRange, recoilRange), 0);
-                GameObject curBullet = Instantiate(bullet, transform.position, recoil);
-                Debug.Log(curBullet.transform.rotation);
-                curBullet.GetComponent<Rigidbody2D>().AddForce(transform.up * force);
-                Debug.Log(curBullet.transform.rotation);
+
+                GameObject curBullet = Instantiate(bullet, firePoint.transform.position, transform.rotation);
+
+                var dir = player.position - firePoint.transform.position;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                firePoint.transform.rotation = Quaternion.AngleAxis((angle + Random.Range(-recoilRange, recoilRange)) - 90f, Vector3.forward);
+
+                curBullet.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.up * force, player.position);
+
                 yield return new WaitForSeconds(0.2f);
             }
             yield return new WaitForSeconds(timeBetweenBursts);
