@@ -8,11 +8,17 @@ public class CometSystem : MonoBehaviour
     GameObject enemy;
     public Object comet;
 
-    private void Start()
+    IEnumerator Start()
     {
         enemy = GameObject.Find("Statek");
         SpawningComet();
+        while (true)
+        {
+            SpawningComet();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
+
     public void SpawningComet()
     {
         whereSpawn = new Vector3(Random.Range(-9f, 9f), 6f, 0f);
