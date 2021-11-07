@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        minXnY = GameObject.Find("Min");
+        maxXnY = GameObject.Find("Max");
         targetSpot = new GameObject("targetSpotEnemy");
         StartCoroutine(Move());
     }
