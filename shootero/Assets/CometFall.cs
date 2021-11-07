@@ -5,8 +5,12 @@ using UnityEngine;
 public class CometFall : MonoBehaviour
 {
     public Rigidbody2D rigidbodyComet;
-    void Update()
+    float strength = 10;
+    private void Start()
     {
-        rigidbodyComet.AddForce(new Vector2(0f, -10f));
+        Vector3 v3Force = strength * transform.forward;
+        Debug.Log(transform.forward);
+        Debug.Log(v3Force);
+        rigidbodyComet.AddForce(v3Force);
     }
 }
