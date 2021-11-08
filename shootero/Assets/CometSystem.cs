@@ -11,7 +11,6 @@ public class CometSystem : MonoBehaviour
     IEnumerator Start()
     {
         enemy = GameObject.Find("Statek");
-        SpawningComet();
         while (true)
         {
             SpawningComet();
