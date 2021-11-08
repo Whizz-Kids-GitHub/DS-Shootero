@@ -10,4 +10,13 @@ public class CometFall : MonoBehaviour
     {
         rigidbodyComet.AddForce(transform.right * strength);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "DestroyDetect")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
