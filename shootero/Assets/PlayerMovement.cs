@@ -4,13 +4,16 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    public Vector2 oMoveInput; //original
-
-    public Vector2 moveInput; //final
-    public float aMoveInput; //x + y - 1
-    public float ll;
     public float speed;
+    public float minRange;
+
+    private Vector2 oMoveInput; //original
+    [HideInInspector]
+    public Vector2 moveInput; //final
+    private float aMoveInput; //x + y - 1
+    
     private Joystick js;
+
 
     void Start()
     {
@@ -65,11 +68,9 @@ public class PlayerMovement : MonoBehaviour
             moveInput.y = oMoveInput.y - aMoveInput * oMoveInput.y / ((aMoveInput + 1));
         }
 
-        ll = moveInput.x + moveInput.y;
-
-        if (oMoveInput.x > 0.4 || oMoveInput.y > 0.4 || oMoveInput.x < -0.4 || oMoveInput.y < -0.4)
+        if (oMoveInput.x > minRange || oMoveInput.y > minRange || oMoveInput.x < -minRange || oMoveInput.y < -minRange)
         {
-            rb.MovePosition(rb.position + moveInput * speed);
+            rb.MovePosition(rb.position + moveInput * speed); 
         }
     }
 }

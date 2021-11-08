@@ -429,11 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153434eeebd624d4eab0b68e9a238cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oMoveInput: {x: 0.5, y: 0.5}
-  moveInput: {x: 0, y: 0}
-  aMoveInput: 0
-  ll: 0
   speed: 0.25
+  minRange: 0.2
+  moveInput: {x: 0, y: 0}
 --- !u!212 &1955630694
 SpriteRenderer:
   m_ObjectHideFlags: 0
