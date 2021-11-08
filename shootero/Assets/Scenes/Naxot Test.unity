@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 824035586}
   - component: {fileID: 824035585}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: Flare2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4983,7 +4983,7 @@ GameObject:
   - component: {fileID: 1381450835}
   - component: {fileID: 1381450834}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Flare1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
