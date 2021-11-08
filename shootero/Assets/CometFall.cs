@@ -5,9 +5,9 @@ using UnityEngine;
 public class CometFall : MonoBehaviour
 {
     public Rigidbody2D rigidbodyComet;
-    float strength = 50;
+    float strength = 900;
     private void Start()
     {
-        rigidbodyComet.AddRelativeForce(new Vector2(0, strength * Time.deltaTime));
+        rigidbodyComet.AddForce(transform.right * strength);
     }
 }

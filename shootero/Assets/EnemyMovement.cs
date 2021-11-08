@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
     }
     IEnumerator Move2()
     {
-        while (0 == 0)
+        while (true)
         {
             transform.position = Vector2.Lerp(transform.position, targetSpot.transform.position, Time.deltaTime);
             yield return new WaitForSeconds(.001f);
