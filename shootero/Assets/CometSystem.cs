@@ -14,7 +14,7 @@ public class CometSystem : MonoBehaviour
         while (true)
         {
             SpawningComet();
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(10f);
         }
     }
 
