@@ -10,16 +10,17 @@ public class EnemyShootingLaser : MonoBehaviour
 
     private void Update()
     {
-        if (Physics2D.Raycast(transform.position, transform.up))
+        RaycastHit2D Thehit;
+        if (Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up)))
         {
-            RaycastHit2D hit = Physics2D.Raycast(firePoint.transform.position, Vector2.up);
+            Thehit = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.up);
             rend.SetPosition(0, firePoint.transform.position);
-            rend.SetPosition(1, hit.point);
+            rend.SetPosition(1, Thehit.point);
         }
         else
         {
             rend.SetPosition(0, firePoint.transform.position);
-            rend.SetPosition(1, transform.up *  5f);
+            rend.SetPosition(1, transform.TransformDirection(Vector2.up) * 10f);
         }
 
         //if (hit.collider.gameObject.CompareTag("Player"))

@@ -8,33 +8,39 @@ public class ExploBullet : MonoBehaviour
     public GameObject explosionEffect;
     private Vector3 playerPlace;
     private Rigidbody rb;
-    public float slowFactor = 0.1f;
+    public float slowFactor;
+    bool tooNear;
 
     private void Start()
     {
+        tooNear = true;
         rb = GetComponent<Rigidbody>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerPlace = player.position;
     }
 
-    private void Update()
+    public void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, playerPlace) < 3f)
+        if (Vector2.Distance(transform.position, playerPlace) <= 1f && tooNear)
         {
-            float x = rb.velocity.x;
-            float y = rb.velocity.y;
-            rb.velocity = new Vector3(x -= slowFactor * Time.deltaTime, y -= slowFactor * Time.deltaTime, 0);
+            transform.position = Vector2.MoveTowards(transform.position, playerPlace, Mathf.Infinity);
+
+        }
+        if (Vector2.Distance(transform.position, playerPlace) <= 0.1f)
+        {
+            tooNear = false;
+            for (int i = 0; i < 3; i++)
+            {
+                GameObject explo = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            }
+            if (Vector3.Distance(transform.position, player.transform.position) < 1f)
+            {
+                //Take damage
+            }
+            Destroy(gameObject);
+
         }
     }
 
-    private void OnTriggerEnter(Collider collision)
-    {
-
-        Destroy(gameObject);
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            GameObject explo = Instantiate(explosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
-        }
-    }
 }

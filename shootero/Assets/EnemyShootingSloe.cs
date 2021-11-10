@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShootingExplo : MonoBehaviour
+public class EnemyShootingSloe : MonoBehaviour
 {
     public GameObject bullet;
     private Transform player;
