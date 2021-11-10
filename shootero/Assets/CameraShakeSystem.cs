@@ -10,10 +10,6 @@ public class CameraShakeSystem : MonoBehaviour
 
     public float speed = 0.125f;
 
-    private void Start()
-    {
-        CameraShake(2.5f);
-    }
     public void CameraShake(float howLong)
     {
         if (cameraShakeTime < howLong)
