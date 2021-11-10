@@ -5,13 +5,14 @@ using UnityEngine;
 public class CometFall : MonoBehaviour
 {
     public Rigidbody2D rigidbodyComet;
-    public AudioSource audioSource;
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+    public AudioSource audioSource;
     float strength = 900;
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(2f);
         rigidbodyComet.AddForce(transform.right * strength);
         spriteRenderer.sprite = sprites[Random.Range(0, 2)];
         audioSource.Play();
