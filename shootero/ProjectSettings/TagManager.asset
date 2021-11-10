@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ship
+    uniqueID: 474506765
+    locked: 0
