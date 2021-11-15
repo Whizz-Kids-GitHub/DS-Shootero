@@ -291,7 +291,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -362,11 +362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455525070187869217, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.45
+      value: -4.86
       objectReference: {fileID: 0}
     - target: {fileID: 2455525070187869217, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.92
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 2455525070187869217, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -403,10 +403,6 @@ PrefabInstance:
     - target: {fileID: 2455525070187869221, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
       propertyPath: m_Name
       value: EnemySloe
-      objectReference: {fileID: 0}
-    - target: {fileID: 2455525070187869223, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
