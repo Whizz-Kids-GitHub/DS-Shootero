@@ -5,6 +5,15 @@
   <resetOnSceneChange>false</resetOnSceneChange>
   <debugMode>false</debugMode>
   <EditorClosed>true</EditorClosed>
-  <LastTimestamp>1636992758</LastTimestamp>
-  <LastSessionID>6185751469215318821</LastSessionID>
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+  <LastTimestamp>1636914362</LastTimestamp>
+=======
+  <LastTimestamp>1636914260</LastTimestamp>
+>>>>>>> Stashed changes
+  <LastSessionID>1544639080545480436</LastSessionID>
+=======
+  <LastTimestamp>1636572725</LastTimestamp>
+  <LastSessionID>363231640948604605</LastSessionID>
+>>>>>>> parent of d42d749 (First Look of Main Menu)
 </ERPSettings>
