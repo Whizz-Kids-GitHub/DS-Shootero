@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody2D rb;
     public float speed;
+    [HideInInspector]
+    public float speedModifier;
     public float minRange;
 
     private Vector2 oMoveInput; //original
@@ -15,11 +18,26 @@ public class PlayerMovement : MonoBehaviour
     
     private Joystick js;
 
+    [Space]
     public GameObject RightThruster;
     public GameObject LeftThruster;
 
+    [Space]
+    public float pHealth;
+    public float pMaxHealth;
+    private float pLastHealth;
+    public Text healthText; 
+    public Image pHSlider;
+    
+    [Space]
+    public int Damage;
+
     void Start()
     {
+        healthText.text = (pHealth.ToString());
+        pLastHealth = pHealth;
+        pHSlider.fillAmount = pHSlider.fillAmount * pMaxHealth;
+
         js = FindObjectOfType<FixedJoystick>();
         rb = this.GetComponent<Rigidbody2D>();
 
@@ -29,7 +47,28 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(Damage != 0)
+        {
+            pHealth -= Damage;
+            Damage = 0;
+        }
+        
+        if (pLastHealth != pHealth)
+        {
+            pLastHealth = pHSlider.fillAmount * pMaxHealth;
+            healthText.text = (pHealth.ToString());
 
+            if (pHealth / pMaxHealth < pHSlider.fillAmount)
+            {
+                pHSlider.fillAmount -= 0.01f;
+            }
+            
+            if (pHealth / pMaxHealth > pHSlider.fillAmount)
+            {
+                pHSlider.fillAmount += 0.01f;
+            } 
+        }
+        
         oMoveInput.y = js.Vertical;
         oMoveInput.x = js.Horizontal;
 
@@ -94,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
                 fMoveInput.y = moveInput.y * -oMoveInput.y * speed;
             }
 
-            rb.MovePosition(rb.position + fMoveInput); 
+            rb.MovePosition(rb.position + fMoveInput * speedModifier); 
         }
 
         if (oMoveInput.x > minRange)
