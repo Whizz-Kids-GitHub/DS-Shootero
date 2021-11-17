@@ -10,8 +10,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
-        minXnY = GameObject.Find("Min");
-        maxXnY = GameObject.Find("Max");
         targetSpot = new GameObject("targetSpotEnemy");
         StartCoroutine(Move());
     }
@@ -21,10 +19,9 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(Move2());
         do
         {
-
             targetSpot.transform.position = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(Random.Range(2, 4.5f));
         } while (true);
 
     }

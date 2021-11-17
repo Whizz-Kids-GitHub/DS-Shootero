@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - FallingObjects
+  - tempSloeObject
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,7 @@ TagManager:
     locked: 0
   - name: Ship
     uniqueID: 474506765
+    locked: 0
+  - name: Ui
+    uniqueID: 1709617531
     locked: 0

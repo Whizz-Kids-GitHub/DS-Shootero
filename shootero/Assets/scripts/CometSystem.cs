@@ -24,7 +24,7 @@ public class CometSystem : MonoBehaviour
 
     IEnumerator SpawningComet()
     {
-        whereSpawn = new Vector3(Random.Range(-2.75f, 2.75f), 7f, 0f);
+        whereSpawn = new Vector3(Random.Range(-9f, 9f), 6f, 0f);
         Vector3 dir = enemy.transform.position - whereSpawn;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         GameObject cometObject = Instantiate(comet, whereSpawn, Quaternion.AngleAxis(angle, Vector3.forward));
