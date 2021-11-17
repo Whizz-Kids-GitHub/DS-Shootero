@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 4c2a59c03796d89418a1e088e212146e
+guid: fbd94b7e1451cb54391db69c0926fb03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6345545149810408850
-    second: Pixilart_Sprite_Sheet_3_0
+      213: -3614530925527127620
+    second: Pixilart_Sprite_Sheet_4_0
   - first:
-      213: 1588373261606661502
-    second: Pixilart_Sprite_Sheet_3_1
+      213: 2671217178218812753
+    second: Pixilart_Sprite_Sheet_4_1
   - first:
-      213: 8180931179899214479
-    second: Pixilart_Sprite_Sheet_3_2
+      213: -481616931961914572
+    second: Pixilart_Sprite_Sheet_4_2
   - first:
-      213: -2429370577625778276
-    second: Pixilart_Sprite_Sheet_3_3
+      213: -1948512198499855249
+    second: Pixilart_Sprite_Sheet_4_3
   - first:
-      213: -1461175837793493411
-    second: Pixilart_Sprite_Sheet_3_4
+      213: -2644128968050071636
+    second: Pixilart_Sprite_Sheet_4_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -102,23 +102,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pixilart_Sprite_Sheet_3_0
+      name: Pixilart_Sprite_Sheet_4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -132,14 +120,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e62095f6e4810f7a0800000000000000
-      internalID: -6345545149810408850
+      spriteID: cb9aa4a164b96ddc0800000000000000
+      internalID: -3614530925527127620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart_Sprite_Sheet_3_1
+      name: Pixilart_Sprite_Sheet_4_1
       rect:
         serializedVersion: 2
         x: 32
@@ -153,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7d2bccd0190b0610800000000000000
-      internalID: 1588373261606661502
+      spriteID: 15557a1fed1121520800000000000000
+      internalID: 2671217178218812753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart_Sprite_Sheet_3_2
+      name: Pixilart_Sprite_Sheet_4_2
       rect:
         serializedVersion: 2
         x: 64
@@ -174,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8a5fcd4091888170800000000000000
-      internalID: 8180931179899214479
+      spriteID: 43bb89cb3f3f059f0800000000000000
+      internalID: -481616931961914572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart_Sprite_Sheet_3_3
+      name: Pixilart_Sprite_Sheet_4_3
       rect:
         serializedVersion: 2
         x: 96
@@ -195,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9774dcb454294ed0800000000000000
-      internalID: -2429370577625778276
+      spriteID: f6496e7aa7e75f4e0800000000000000
+      internalID: -1948512198499855249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pixilart_Sprite_Sheet_3_4
+      name: Pixilart_Sprite_Sheet_4_4
       rect:
         serializedVersion: 2
         x: 128
@@ -216,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5e5fe1315cd8bbe0800000000000000
-      internalID: -1461175837793493411
+      spriteID: ca72e0776ba2e4bd0800000000000000
+      internalID: -2644128968050071636
       vertices: []
       indices: 
       edges: []

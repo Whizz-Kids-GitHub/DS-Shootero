@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 4676085594418709361}
   - component: {fileID: 931661604}
   - component: {fileID: 931661603}
+  - component: {fileID: 8658676991922366110}
   - component: {fileID: 1036136840}
   m_Layer: 0
   m_Name: EnemyBurst
@@ -233,7 +234,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6345545149810408850, guid: 4c2a59c03796d89418a1e088e212146e, type: 3}
+  m_Sprite: {fileID: -4203440326864109775, guid: e03f919009f2ddc4c8e9a19cc3614221, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -277,6 +278,18 @@ MonoBehaviour:
   recoilRange: 5
   firePoint: {fileID: 293563155}
   sound: {fileID: 1881271036}
+--- !u!114 &8658676991922366110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676085594418709367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1036136840
 Animator:
   serializedVersion: 3
