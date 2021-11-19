@@ -16,7 +16,7 @@ public class LevelCounter : MonoBehaviour
         respMenager = GameObject.Find("EnemyRespawnMenager").GetComponent<EnemyRespawnMenager>();
 
         enemyCount = level * (dificultyScallingSpeed);
-        Respawn();
+        StartCoroutine(Respawn());
     }
 
     private void Update()
@@ -27,18 +27,17 @@ public class LevelCounter : MonoBehaviour
 
             enemyCount = dificultyScallingSpeed * (Mathf.Pow(level, 1.5f));
             deaths = 0;
-            Respawn();
+            StartCoroutine(Respawn());
         }
 
     }
 
-    public void Respawn()
+    public IEnumerator Respawn()
     {
-
         for (int i = 0; i < enemyCount; i++)
         {
+            yield return new WaitForSeconds(1);
             respMenager.RespawnEnemies(1);
         }
-
     }
 }
