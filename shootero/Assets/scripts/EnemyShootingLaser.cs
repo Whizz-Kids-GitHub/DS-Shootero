@@ -19,16 +19,18 @@ public class EnemyShootingLaser : MonoBehaviour
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 
-        if (Physics2D.Raycast(transform.position, Vector2.up * 111))
+        rend.SetPosition(0, firePoint.transform.position);
+        rend.SetPosition(1, firePoint.transform.position + (-transform.up * 5F));
+
+        var hit = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (-transform.up * 5F));
+
+        if (hit.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(firePoint.transform.position, Vector2.up);
-            rend.SetPosition(0, firePoint.transform.position);
-            rend.SetPosition(1, hit.point);
-        }
-        else
-        {
-            rend.SetPosition(0, firePoint.transform.position);
-            rend.SetPosition(1, Vector2.up *  5f);
+            Debug.Log(hit.transform.name);
+            if(hit.collider.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("I HIT PLAYER!");
+            }
         }
 
         //if (hit.collider.gameObject.CompareTag("Player"))
