@@ -45,5 +45,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemies:
   - {fileID: 4676085594418709367, guid: 04d124ad445435d49b4320c86e5e3c7c, type: 3}
-  dificulty: 0
-  dificultyScallingSpeed: 0

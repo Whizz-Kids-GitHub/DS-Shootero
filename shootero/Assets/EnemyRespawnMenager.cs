@@ -17,9 +17,11 @@ public class EnemyRespawnMenager : MonoBehaviour
     private GameObject finalMoveSpaceMax;
     private GameObject finalMoveSpaceMin;
 
+    private Vector3 rngArea;
+
     private int randomNum;
 
-    public void RespawnEnemies(float enemiesNum)
+    public void RespawnEnemies(float enemiesNum, int enemy)
     {
         maxXnY = GameObject.Find("RespawnMaxXnY");
         minXnY = GameObject.Find("RespawnMinXnY");
@@ -30,11 +32,10 @@ public class EnemyRespawnMenager : MonoBehaviour
         maxXnY3 = GameObject.Find("RespawnMaxXnY3");
         minXnY3 = GameObject.Find("RespawnMinXnY3");
 
-        maxXnY3 = GameObject.Find("EnemyMoveSpaceMax");
-        minXnY3 = GameObject.Find("EnemyMoveSpaceMin");
-
         for (int i = 0; i < enemiesNum; i++)
         {
+            #region areaChoose
+
             Vector3 respArea1 = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
 
@@ -45,7 +46,6 @@ public class EnemyRespawnMenager : MonoBehaviour
                 Random.Range(minXnY3.transform.position.y, maxXnY3.transform.position.y), 0);
 
             randomNum = Random.Range(1, 4);
-            Vector3 rngArea = Vector3.zero;
 
             switch (randomNum)
             {
@@ -60,15 +60,11 @@ public class EnemyRespawnMenager : MonoBehaviour
                     rngArea = respArea3;
                     break;
             }
+            #endregion
 
             Debug.Log(rngArea);
 
-            GameObject curEnemy = Instantiate(allEnemies[Random.Range(0, allEnemies.Length - 1)],
-                rngArea, Quaternion.identity);
-
-            curEnemy.TryGetComponent<EnemyMovement>(out EnemyMovement useless);
-            useless.targetPosition = new Vector3(Random.Range(finalMoveSpaceMin.transform.position.x, finalMoveSpaceMax.transform.position.x),
-                 Random.Range(finalMoveSpaceMin.transform.position.y, finalMoveSpaceMax.transform.position.y), 0);
+            Instantiate(allEnemies[enemy], new Vector3(rngArea.x, rngArea.y, 10), new Quaternion(0,0,0,0));
 
             //curEnemy.GetComponent<EnemyStatisctics>();
         }

@@ -18,7 +18,7 @@ public class EnemyShootingExplo : MonoBehaviour
     {
         var dir = player.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle -90, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle +90, Vector3.forward);
     }
 
     private IEnumerator Atack()
@@ -29,7 +29,7 @@ public class EnemyShootingExplo : MonoBehaviour
             GameObject curBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             sound.Play();
 
-            curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * force, ForceMode.Impulse);
+            curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * -force, ForceMode.Impulse);
             //curBullet.GetComponent<Rigidbody>().drag = Vector2.Distance(transform.position, player.position) * Time.deltaTime;
             yield return new WaitForSeconds(3f);
         } while (true);

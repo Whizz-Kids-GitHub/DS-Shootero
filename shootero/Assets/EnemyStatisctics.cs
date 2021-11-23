@@ -6,6 +6,7 @@ public class EnemyStatisctics : MonoBehaviour
 {
     public int damage;
     public int hp;
+    private GameObject levelCounter;
 
     private void Update()
     {
@@ -16,7 +17,11 @@ public class EnemyStatisctics : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameObject levelCounter = GameObject.Find("LevelCounter");
-        levelCounter.GetComponent<LevelCounter>().deaths += 1;
+        if (levelCounter = GameObject.Find("LevelCounter"))
+        {
+            levelCounter.GetComponent<LevelCounter>().deaths += 1;
+            levelCounter.GetComponent<LevelCounter>().StartSequence();
+        }
+
     }
 }

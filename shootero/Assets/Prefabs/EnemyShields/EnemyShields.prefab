@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 391334119}
   - component: {fileID: 391334120}
   - component: {fileID: 391334121}
+  - component: {fileID: -6590479716371036569}
   m_Layer: 0
   m_Name: EnemyShields
   m_TagString: Enemy
@@ -499,6 +500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
+  exploParticles: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!60 &391334119
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -573,3 +576,17 @@ MonoBehaviour:
   recoilRange: 20
   firePoint: {fileID: 1219791094}
   sound: {fileID: 571522039}
+--- !u!114 &-6590479716371036569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919681059642249108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  hp: 0
