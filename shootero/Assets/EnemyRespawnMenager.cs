@@ -20,6 +20,12 @@ public class EnemyRespawnMenager : MonoBehaviour
     private Vector3 rngArea;
 
     private int randomNum;
+    private LevelCounter levelCounter;
+
+    private void Start()
+    {
+        levelCounter = GameObject.Find("LevelCounter").GetComponent<LevelCounter>();
+    }
 
     public void RespawnEnemies(float enemiesNum, int enemy)
     {
@@ -62,11 +68,10 @@ public class EnemyRespawnMenager : MonoBehaviour
             }
             #endregion
 
-            Debug.Log(rngArea);
+            GameObject curEnemy = Instantiate(allEnemies[enemy], new Vector3(rngArea.x, rngArea.y, 10), new Quaternion(0,0,0,0));
 
-            Instantiate(allEnemies[enemy], new Vector3(rngArea.x, rngArea.y, 10), new Quaternion(0,0,0,0));
-
-            //curEnemy.GetComponent<EnemyStatisctics>();
+            curEnemy.GetComponent<EnemyStatisctics>().hp += levelCounter.enemyStats;
+            curEnemy.GetComponent<EnemyStatisctics>().damage += levelCounter.enemyStats;
         }
     }
 }

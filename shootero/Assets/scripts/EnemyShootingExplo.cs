@@ -9,6 +9,8 @@ public class EnemyShootingExplo : MonoBehaviour
     public AudioSource sound;
     public GameObject firePoint;
     public float force;
+
+    public int damage;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -23,6 +25,7 @@ public class EnemyShootingExplo : MonoBehaviour
 
     private IEnumerator Atack()
     {
+        yield return new WaitForSeconds(Random.Range(1, 2));
         do
         {
             firePoint.transform.rotation = this.transform.rotation;
@@ -30,8 +33,10 @@ public class EnemyShootingExplo : MonoBehaviour
             sound.Play();
 
             curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * -force, ForceMode.Impulse);
-            //curBullet.GetComponent<Rigidbody>().drag = Vector2.Distance(transform.position, player.position) * Time.deltaTime;
-            yield return new WaitForSeconds(3f);
+            curBullet.GetComponent<ExploBullet>().damage += damage;
+            
+            yield return new WaitForSeconds(Random.Range(3f, 5));
+
         } while (true);
     }
 }

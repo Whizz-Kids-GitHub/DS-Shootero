@@ -11,23 +11,27 @@ public class EnemyShootingLaser : MonoBehaviour
 
     private float time;
     private float startTime;
+
+    [SerializeField]
+    private float duration = 0.2f;
+
+    private float angle;
+    private Vector3 dir;
+
+    public int damage;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         startTime = 0.2f;
         time = startTime;
     }
-
-    private void LateUpdate()
-    {
-        var dir = player.position - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
-
-    }
     private void Update()
     {
-        
+        dir = player.position - transform.position;
+        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        StartCoroutine(Rotate());
+
         rend.SetPosition(0, firePoint.transform.position);
         rend.SetPosition(1, firePoint.transform.position + (-transform.up * 15F));
 
@@ -41,7 +45,7 @@ public class EnemyShootingLaser : MonoBehaviour
 
                 if (time <= 0)
                 {
-                    var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 1;
+                    var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += damage;
                     time = startTime;
                 }
                 else
@@ -52,5 +56,18 @@ public class EnemyShootingLaser : MonoBehaviour
         }
 
        
+    }
+    IEnumerator Rotate()
+    {
+        
+        time = 0;
+        Quaternion startRotation = transform.rotation;
+        while (time < duration)
+        {
+            transform.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle , Vector3.forward), time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }

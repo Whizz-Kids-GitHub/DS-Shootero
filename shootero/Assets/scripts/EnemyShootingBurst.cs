@@ -13,6 +13,7 @@ public class EnemyShootingBurst : MonoBehaviour
     public GameObject firePoint;
     public AudioSource sound;
 
+    public int damage = 1;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -38,8 +39,8 @@ public class EnemyShootingBurst : MonoBehaviour
                 GameObject curBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                 sound.Play();
 
-                curBullet.GetComponent<Rigidbody2D>().AddForce(firePoint.transform.up * force);
-                //curBullet.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.up * force, player.position);
+                curBullet.GetComponent<Rigidbody>().AddForce(firePoint.transform.up * force);
+                curBullet.GetComponent<BulletBurst>().damage = damage;
 
                 yield return new WaitForSeconds(0.2f);
             }

@@ -9,8 +9,6 @@ public class EnemyMovement : MonoBehaviour
     public GameObject maxXnY;
 
     public GameObject exploParticles;
-
-    private float duration = 20;
     public Vector3 targetPosition;
 
     private void Start()

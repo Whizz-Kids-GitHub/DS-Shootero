@@ -234,7 +234,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6345545149810408850, guid: 4c2a59c03796d89418a1e088e212146e, type: 3}
+  m_Sprite: {fileID: -3614530925527127620, guid: fbd94b7e1451cb54391db69c0926fb03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5101292642805831376
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
-  exploParticles: {fileID: 0}
+  exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5101292642805831379
 MonoBehaviour:
@@ -277,6 +277,7 @@ MonoBehaviour:
   sound: {fileID: 5101292642177757894}
   firePoint: {fileID: 5101292642786397158}
   force: 10
+  damage: 5
 --- !u!95 &532793399109302970
 Animator:
   serializedVersion: 3
