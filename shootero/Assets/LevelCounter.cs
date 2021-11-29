@@ -18,11 +18,8 @@ public class LevelCounter : MonoBehaviour
     [HideInInspector]
     public int enemyStats;
 
-    private bool once;
-
     private void Start()
     {
-        once = true;
 
         enemyStats = 0;
         respMenager = GameObject.Find("EnemyRespawnMenager").GetComponent<EnemyRespawnMenager>();

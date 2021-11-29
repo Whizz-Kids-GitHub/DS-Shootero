@@ -5,10 +5,12 @@ using UnityEngine;
 public class ExploBullet : MonoBehaviour
 {
     private Transform player;
-    public GameObject explosionEffect;
+    [SerializeField]
+    private GameObject explosionEffect;
     private Vector3 playerPlace;
     private Rigidbody rb;
-    public float slowFactor = 0.1f;
+    [SerializeField]
+    private float slowFactor = 0.08f;
 
     private float time;
     private float startTime = 4f;

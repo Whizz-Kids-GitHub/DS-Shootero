@@ -274,9 +274,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 2696769996459083385, guid: fa15588dd6231ce41ab28e9bcfdd674d, type: 3}
+  player: {fileID: 0}
   sound: {fileID: 5101292642177757894}
   firePoint: {fileID: 5101292642786397158}
-  force: 10
+  force: 11
   damage: 5
 --- !u!95 &532793399109302970
 Animator:
@@ -309,5 +310,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  damage: 3
+  hp: 3

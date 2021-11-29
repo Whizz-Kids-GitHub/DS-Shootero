@@ -576,6 +576,7 @@ MonoBehaviour:
   recoilRange: 20
   firePoint: {fileID: 1219791094}
   sound: {fileID: 571522039}
+  damage: 0
 --- !u!114 &-6590479716371036569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,5 +589,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  damage: 2
+  hp: 5

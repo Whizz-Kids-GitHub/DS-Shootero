@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemies:
   - {fileID: 4676085594418709367, guid: 04d124ad445435d49b4320c86e5e3c7c, type: 3}
+  - {fileID: 5101292642805831383, guid: 2c45c3d37b08fe1488d2c6d6416f2ae9, type: 3}
+  - {fileID: 8919681059642249108, guid: 77a49c9e88568804e9d8e6a3ed21a62b, type: 3}
+  - {fileID: 2455525070187869221, guid: 8760776882d087a4ebe17bcac2d8d2c3, type: 3}
+  - {fileID: 7080875946831072483, guid: c4f759f69eb143b4494e16d480a2409f, type: 3}

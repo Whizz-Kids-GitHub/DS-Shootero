@@ -14,9 +14,6 @@ public class EnemyRespawnMenager : MonoBehaviour
     private GameObject minXnY3;
     private GameObject maxXnY3;
 
-    private GameObject finalMoveSpaceMax;
-    private GameObject finalMoveSpaceMin;
-
     private Vector3 rngArea;
 
     private int randomNum;

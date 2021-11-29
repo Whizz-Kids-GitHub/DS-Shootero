@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemyShootingExplo : MonoBehaviour
 {
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
     private Transform player;
-    public AudioSource sound;
-    public GameObject firePoint;
-    public float force;
+    [SerializeField]
+    private AudioSource sound;
+    [SerializeField]
+    private GameObject firePoint;
+    [SerializeField]
+    private float force;
 
     public int damage;
     private void Start()

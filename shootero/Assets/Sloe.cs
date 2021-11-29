@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Sloe : MonoBehaviour
 {
-    public float time;
-    public float duration;
-    public float duration2;
+    private float time;
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float duration2;
 
     private void Awake()
     {

@@ -12,17 +12,19 @@ public class EnemyStatisctics : MonoBehaviour
     {
         levelCounter = GameObject.Find("LevelCounter");
 
+        damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
+
         if (this.TryGetComponent<EnemyShootingLaser>(out EnemyShootingLaser shootingScriptL))
         {
-            shootingScriptL.damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
+            shootingScriptL.damage = damage;
         }
         else if (this.TryGetComponent<EnemyShootingBurst>(out EnemyShootingBurst shootingScriptB))
         {
-            shootingScriptB.damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
+            shootingScriptB.damage = damage;
         }
         else if (this.TryGetComponent<EnemyShootingExplo>(out EnemyShootingExplo shootingScriptEX))
         {
-            shootingScriptEX.damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
+            shootingScriptEX.damage = damage;
         }
 
     }
@@ -52,8 +54,11 @@ public class EnemyStatisctics : MonoBehaviour
     {
         if (levelCounter = GameObject.Find("LevelCounter"))
         {
-            levelCounter.GetComponent<LevelCounter>().deaths += 1;
-            levelCounter.GetComponent<LevelCounter>().StartSequence();
+            if (!this.GetComponent<MotherShipShip>())
+            {
+                levelCounter.GetComponent<LevelCounter>().deaths += 1;
+                levelCounter.GetComponent<LevelCounter>().StartSequence();
+            }
         }
 
     }
