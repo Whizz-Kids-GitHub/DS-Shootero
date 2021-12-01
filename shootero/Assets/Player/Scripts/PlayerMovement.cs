@@ -31,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
     
     [Space]
     public int Damage;
+    public bool invunerable;
+    public GameObject FireEffect;
+    public GameObject DeathEffect;
+    private GameObject child;
+    private bool alive = true;
+
 
     void Start()
     {
@@ -47,10 +53,26 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if(Damage != 0)
+        if(Damage != 0 && !invunerable && alive)
         {
-            pHealth -= Damage;
-            Damage = 0;
+            if(pHealth - Damage > 0)
+            {
+                pHealth -= Damage;
+                Damage = 0;
+            }
+            else
+            {
+                pHealth = 0;
+                Damage = 0;
+            }
+
+            if (pHealth <= 0)
+            {
+                alive = false;
+
+                Instantiate(FireEffect, this.transform);
+                Invoke("Death", 2);
+            }
         }
         
         if (pLastHealth != pHealth)
@@ -133,7 +155,10 @@ public class PlayerMovement : MonoBehaviour
                 fMoveInput.y = moveInput.y * -oMoveInput.y * speed;
             }
 
-            rb.MovePosition(rb.position + fMoveInput * speedModifier); 
+            if (alive)
+            {
+                rb.MovePosition(rb.position + fMoveInput * speedModifier);
+            }
         }
 
         if (oMoveInput.x > minRange)
@@ -162,5 +187,14 @@ public class PlayerMovement : MonoBehaviour
         {
             RightThruster.SetActive(false);
         }
+    }
+
+    void Death()
+    {
+        child = Instantiate(DeathEffect, this.transform);
+
+        child.transform.parent = null;
+
+        Destroy(this.gameObject);
     }
 }

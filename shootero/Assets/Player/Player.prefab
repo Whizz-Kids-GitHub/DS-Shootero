@@ -387,9 +387,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 474506765
+  m_SortingLayer: 1
+  m_SortingOrder: 25
   m_Sprite: {fileID: 21300000, guid: a84697a3a3598d74ab87d4cdf5627d13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -423,6 +423,9 @@ MonoBehaviour:
   healthText: {fileID: 3612905842590030731}
   pHSlider: {fileID: 2164010631024978260}
   Damage: 0
+  invunerable: 0
+  FireEffect: {fileID: 7499483324048080231, guid: 27aaf8611519f2244b878169b4b6c165, type: 3}
+  DeathEffect: {fileID: 8091725969163209020, guid: 0271c8c3bf898a5429f4ddf4f423e5bb, type: 3}
 --- !u!114 &2679614345286271110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,14 +439,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoil: 0
-  shooting: 0
+  shooting: 1
   Bullet:
   - lastBullet: {fileID: 0}
     firePoint: {fileID: 6893600189228094448}
     canShoot: 1
     damage: 1
     bulSpeed: 250
-    atkSpeed: 4
+    atkSpeed: 0.5
     amount: 1
     bulletPre: {fileID: 1787543012497741046, guid: fed431bdb15c2ce47909c5a4e52e790a, type: 3}
   - lastBullet: {fileID: 0}
@@ -451,7 +454,7 @@ MonoBehaviour:
     canShoot: 1
     damage: 1
     bulSpeed: 250
-    atkSpeed: 4
+    atkSpeed: 0.5
     amount: 1
     bulletPre: {fileID: 1787543012497741046, guid: fed431bdb15c2ce47909c5a4e52e790a, type: 3}
 --- !u!50 &1775375780978373611

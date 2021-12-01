@@ -361,18 +361,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2679614345286271110, guid: 41e628bb005132d408f8d7153ffdf9db, type: 3}
-      propertyPath: shooting
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679614345286271110, guid: 41e628bb005132d408f8d7153ffdf9db, type: 3}
-      propertyPath: Bullet.Array.data[0].atkSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2679614345286271110, guid: 41e628bb005132d408f8d7153ffdf9db, type: 3}
-      propertyPath: Bullet.Array.data[1].atkSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e628bb005132d408f8d7153ffdf9db, type: 3}
 --- !u!1001 &5441523715392910892
