@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - FallingObjects
   - tempSloeObject
+  - Shield
   layers:
   - Default
   - TransparentFX

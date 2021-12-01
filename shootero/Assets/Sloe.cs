@@ -4,31 +4,48 @@ using UnityEngine;
 
 public class Sloe : MonoBehaviour
 {
-    public float scalingSpeed;
+    private float time;
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float duration2;
 
     private void Awake()
     {
-        transform.localScale = new Vector3(0.1f, 0.1f, 0);
-    }
-    private void Start()
-    {
-        
-        SizeUp();
+        transform.localScale = Vector3.zero;
+        StartCoroutine(SizeUp());
     }
 
-    void SizeUp()
+    IEnumerator SizeUp()
     {
-
-
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1, 1, 0), scalingSpeed * Time.deltaTime);
-        Invoke("step", 0.1f);
-
-    }
-    void step()
-    {
-        if (transform.localScale.x <= 2)
+        time = 0;
+        Vector3 startSize = Vector3.zero;
+        while (time < duration)
         {
-            SizeUp();
+
+            transform.localScale = Vector3.Lerp(startSize, new Vector3(2, 2, 0), time / duration);
+            time += Time.deltaTime;
+            yield return null;
         }
+        transform.localScale = new Vector3(2, 2, 0);
+
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(destroy());
+
     }
+
+    IEnumerator destroy()
+    {
+        time = 0;
+        Vector3 startSize = Vector3.zero;
+        while (time < duration2)
+        {
+            transform.localScale = Vector3.Lerp(new Vector3(2, 2, 0), startSize, time / duration2);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = new Vector3(0, 0, 0);
+        Destroy(gameObject);
+    }
+
 }

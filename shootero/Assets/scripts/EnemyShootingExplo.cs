@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class EnemyShootingExplo : MonoBehaviour
 {
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
     private Transform player;
-    public AudioSource sound;
-    public GameObject firePoint;
-    public float force;
+    [SerializeField]
+    private AudioSource sound;
+    [SerializeField]
+    private GameObject firePoint;
+    [SerializeField]
+    private float force;
+
+    public int damage;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -18,20 +25,23 @@ public class EnemyShootingExplo : MonoBehaviour
     {
         var dir = player.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle -90, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle +90, Vector3.forward);
     }
 
     private IEnumerator Atack()
     {
+        yield return new WaitForSeconds(Random.Range(1, 2));
         do
         {
             firePoint.transform.rotation = this.transform.rotation;
             GameObject curBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
             sound.Play();
 
-            curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * force, ForceMode.Impulse);
-            //curBullet.GetComponent<Rigidbody>().drag = Vector2.Distance(transform.position, player.position) * Time.deltaTime;
-            yield return new WaitForSeconds(3f);
+            curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * -force, ForceMode.Impulse);
+            curBullet.GetComponent<ExploBullet>().damage += damage;
+            
+            yield return new WaitForSeconds(Random.Range(3f, 5));
+
         } while (true);
     }
 }

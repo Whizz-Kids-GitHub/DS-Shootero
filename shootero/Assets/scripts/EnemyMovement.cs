@@ -8,23 +8,27 @@ public class EnemyMovement : MonoBehaviour
     public GameObject minXnY;
     public GameObject maxXnY;
 
+    public GameObject exploParticles;
+    public Vector3 targetPosition;
+
     private void Start()
     {
-        minXnY = GameObject.Find("Min");
-        maxXnY = GameObject.Find("Max");
         targetSpot = new GameObject("targetSpotEnemy");
         StartCoroutine(Move());
     }
 
     IEnumerator Move()
     {
+
         StartCoroutine(Move2());
         do
         {
+            maxXnY = GameObject.Find("maxXnY");
+            minXnY = GameObject.Find("minXnY");
 
             targetSpot.transform.position = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(Random.Range(2, 4.5f));
         } while (true);
 
     }
@@ -36,5 +40,14 @@ public class EnemyMovement : MonoBehaviour
             yield return new WaitForSeconds(.001f);
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FallingObjects"))
+        {
+            Instantiate(exploParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

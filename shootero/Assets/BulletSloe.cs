@@ -9,7 +9,7 @@ public class BulletSloe : MonoBehaviour
     private GameObject temp;
     public GameObject sloe;
 
-    private void Start()
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerPlace = player;
@@ -26,11 +26,12 @@ public class BulletSloe : MonoBehaviour
     {
         if (collision.gameObject.tag == ("tempSloeObject"))
         {
-
             Instantiate(sloe, transform.position, Quaternion.identity);
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
+            
             Destroy(temp);
+            Destroy(gameObject);
         }
         else
         {
