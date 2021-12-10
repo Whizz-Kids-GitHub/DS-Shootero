@@ -20,6 +20,48 @@ TextureImporter:
   - first:
       213: -3300182681716036663
     second: Sprite-0001_13
+  - first:
+      213: 5901323728722048983
+    second: Thruster_0
+  - first:
+      213: 1781391132851687256
+    second: Thruster_1
+  - first:
+      213: -8545197558949507891
+    second: Thruster_2
+  - first:
+      213: 8267490369266148514
+    second: Thruster_3
+  - first:
+      213: 8427726934780966766
+    second: Thruster_4
+  - first:
+      213: 527589671236735508
+    second: Thruster_5
+  - first:
+      213: -6237257909143878647
+    second: Thruster_6
+  - first:
+      213: -6444268980992059739
+    second: Thruster_7
+  - first:
+      213: 2447442620957643177
+    second: Thruster_8
+  - first:
+      213: -4576482486295865063
+    second: Thruster_9
+  - first:
+      213: 2412705499004927466
+    second: Thruster_10
+  - first:
+      213: 8713326328873824294
+    second: Thruster_11
+  - first:
+      213: -9136163675025717081
+    second: Thruster_12
+  - first:
+      213: 3552804806807381910
+    second: Thruster_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite-0001_0
+      name: Thruster_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226539a93cdcf9ca0800000000000000
-      internalID: -6007857137893288414
+      spriteID: 7d7bf0b2aa6b5e150800000000000000
+      internalID: 5901323728722048983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_1
+      name: Thruster_1
       rect:
         serializedVersion: 2
         x: 0
@@ -156,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47c83cc5d9479ea30800000000000000
-      internalID: 4245052342988409972
+      spriteID: 85fc7af0cc5c8b810800000000000000
+      internalID: 1781391132851687256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_2
+      name: Thruster_2
       rect:
         serializedVersion: 2
         x: 0
@@ -177,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a5de0a9ac460b490800000000000000
-      internalID: -7732569738864306783
+      spriteID: dcc8743381c596980800000000000000
+      internalID: -8545197558949507891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_3
+      name: Thruster_3
       rect:
         serializedVersion: 2
         x: 0
@@ -198,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f11d5044e72ff400800000000000000
-      internalID: 360050356498797049
+      spriteID: 2a4621410b60cb270800000000000000
+      internalID: 8267490369266148514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_4
+      name: Thruster_4
       rect:
         serializedVersion: 2
         x: 0
@@ -219,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e4eace3ee1577060800000000000000
-      internalID: 6951114633567200485
+      spriteID: e677c93cefc45f470800000000000000
+      internalID: 8427726934780966766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_5
+      name: Thruster_5
       rect:
         serializedVersion: 2
         x: 0
@@ -240,19 +282,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a123ae953e0580a0800000000000000
-      internalID: -6880077232281017949
+      spriteID: 4121b3db200625700800000000000000
+      internalID: 527589671236735508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_6
+      name: Thruster_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 5
+        width: 4
         height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -261,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83d74f21519449390800000000000000
-      internalID: -7812539098719814344
+      spriteID: 904cbf06afec079a0800000000000000
+      internalID: -6237257909143878647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_7
+      name: Thruster_7
       rect:
         serializedVersion: 2
         x: 7
@@ -282,14 +324,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7823d35dededbcd0800000000000000
-      internalID: -2540613011197712258
+      spriteID: 5a656e6418b5196a0800000000000000
+      internalID: -6444268980992059739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_8
+      name: Thruster_8
       rect:
         serializedVersion: 2
         x: 7
@@ -303,14 +345,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a992be59913da1420800000000000000
-      internalID: 2601623841602742682
+      spriteID: 9a1d45eb81017f120800000000000000
+      internalID: 2447442620957643177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_9
+      name: Thruster_9
       rect:
         serializedVersion: 2
         x: 7
@@ -324,14 +366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acd2c449f5b173c70800000000000000
-      internalID: 8950652881746013642
+      spriteID: 919d98b0d611d70c0800000000000000
+      internalID: -4576482486295865063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_10
+      name: Thruster_10
       rect:
         serializedVersion: 2
         x: 7
@@ -345,14 +387,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8768e4da784530c0800000000000000
-      internalID: -4596688152266512502
+      spriteID: aedf1d74ed6ab7120800000000000000
+      internalID: 2412705499004927466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_11
+      name: Thruster_11
       rect:
         serializedVersion: 2
         x: 7
@@ -366,14 +408,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa53302daa17379f0800000000000000
-      internalID: -471908557461965398
+      spriteID: 62035948124fbe870800000000000000
+      internalID: 8713326328873824294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_12
+      name: Thruster_12
       rect:
         serializedVersion: 2
         x: 7
@@ -387,14 +429,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c1dffac43c7878f0800000000000000
-      internalID: -542547188912238135
+      spriteID: 7a8c3440b83d53180800000000000000
+      internalID: -9136163675025717081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite-0001_13
+      name: Thruster_13
       rect:
         serializedVersion: 2
         x: 7
@@ -408,8 +450,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cb6b6a06556332d0800000000000000
-      internalID: -3300182681716036663
+      spriteID: 697ed02f5291e4130800000000000000
+      internalID: 3552804806807381910
       vertices: []
       indices: 
       edges: []
