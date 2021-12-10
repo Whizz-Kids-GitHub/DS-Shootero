@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
-  exploParticles: {fileID: 0}
+  exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!60 &391334119
 PolygonCollider2D:

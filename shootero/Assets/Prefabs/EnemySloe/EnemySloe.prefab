@@ -19234,6 +19234,8 @@ GameObject:
   - component: {fileID: 2455525070187869220}
   - component: {fileID: 5357328790513421465}
   - component: {fileID: 2629340091052705400}
+  - component: {fileID: 5233334466881763537}
+  - component: {fileID: 8112977441521707984}
   m_Layer: 0
   m_Name: EnemySloe
   m_TagString: Untagged
@@ -19326,7 +19328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
-  exploParticles: {fileID: 0}
+  exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &2455525070187869220
 MonoBehaviour:
@@ -19382,6 +19384,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   hp: 5
+--- !u!60 &5233334466881763537
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455525070187869221}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.50823, y: -0.045803428}
+      - {x: 0.5060693, y: 0.1906833}
+      - {x: 0.33139575, y: 0.3523146}
+      - {x: -0.3311801, y: 0.36445314}
+      - {x: -0.5101155, y: 0.20303753}
+      - {x: -0.50373435, y: -0.046458714}
+      - {x: -0.4740591, y: -0.28595057}
+      - {x: -0.28352416, y: -0.49180815}
+      - {x: -0.019104362, y: -0.1334225}
+      - {x: 0.18135166, y: -0.38748148}
+      - {x: 0.28840184, y: -0.49857166}
+      - {x: 0.46698904, y: -0.2881921}
+--- !u!50 &8112977441521707984
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2455525070187869221}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2455525070448622868
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticlesDestro : MonoBehaviour
 {
-    private float time = 1f;
+    private float time = 5f;
 
     private void Update()
     {

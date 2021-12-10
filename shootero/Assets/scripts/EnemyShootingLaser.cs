@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class EnemyShootingLaser : MonoBehaviour
 {
-    public LineRenderer rend;
-    public GameObject firePoint;
-    public LayerMask layerMask;
+    [SerializeField]
+    private LineRenderer rend;
+    [SerializeField]
+    private GameObject firePoint;
     private Transform player;
 
     private float time;
     private float startTime;
 
     [SerializeField]
-    private float duration = 0.2f;
-
-    private float angle;
-    private Vector3 dir;
+    private float speed = 0;
 
     public int damage;
     private void Start()
@@ -27,10 +25,12 @@ public class EnemyShootingLaser : MonoBehaviour
     }
     private void Update()
     {
-        dir = player.position - transform.position;
-        angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-
-        StartCoroutine(Rotate());
+        Vector3 dir = player.transform.position - transform.position;
+        dir.z = 0; // keep the direction strictly horizontal
+        Quaternion rot = Quaternion.LookRotation(dir);
+        // slerp to the desired rotation over time
+        var rotation = Quaternion.Slerp(transform.rotation, rot, speed * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(0, 0, rotation.z);
 
         rend.SetPosition(0, firePoint.transform.position);
         rend.SetPosition(1, firePoint.transform.position + (-transform.up * 15F));
@@ -39,7 +39,7 @@ public class EnemyShootingLaser : MonoBehaviour
 
         if (hit.collider != null)
         {
-            if(hit.collider.gameObject.CompareTag("Player"))
+            if (hit.collider.gameObject.CompareTag("Player"))
             {
                 rend.SetPosition(1, hit.point);
 
@@ -54,20 +54,6 @@ public class EnemyShootingLaser : MonoBehaviour
                 }
             }
         }
+    }
 
-       
-    }
-    IEnumerator Rotate()
-    {
-        
-        time = 0;
-        Quaternion startRotation = transform.rotation;
-        while (time < duration)
-        {
-            transform.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle , Vector3.forward), time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
 }

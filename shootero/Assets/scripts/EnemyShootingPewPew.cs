@@ -1,0 +1,130 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyShootingPewPew : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject firePoint;
+    [SerializeField]
+    private LineRenderer rend;
+    private Transform player;
+    [SerializeField]
+    private float cooldownbtwshots;
+
+    public int damage = 3;
+
+    private float time;
+    private float duration = 0.15f;
+
+    private float time2;
+    private float startTime = 1f;
+
+    private EnemyMovement movement;
+
+    private void Start()
+    {
+        time2 = startTime;
+        player = GameObject.Find("Player").GetComponent<Transform>();
+        movement = GetComponent<EnemyMovement>();
+        StartCoroutine(Atack());
+    }
+
+    public void Update()
+    {
+        var dir = player.position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
+        rend.SetPosition(0, firePoint.transform.position);
+
+        if (movement.canMove)
+        {
+            rend.SetPosition(0, firePoint.transform.position);
+            rend.SetPosition(1, firePoint.transform.position);
+        }
+    }
+
+    private IEnumerator Atack()
+    {
+        yield return new WaitForSeconds(Random.Range(2, 4));
+        movement.canMove = false;
+
+        var dir = player.position - firePoint.transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        firePoint.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
+        yield return new WaitForSeconds(2);
+
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, firePoint.transform.rotation.z -10);
+        var rotbefore = Quaternion.Euler(0, 0, firePoint.transform.rotation.z -10);
+        for (int i = 0; i < 5; i++)
+        {
+            firePoint.transform.rotation = Quaternion.Euler(0, 0, rotbefore.z + i * 5);
+
+            rend.SetPosition(0, firePoint.transform.position);
+            rend.SetPosition(1, firePoint.transform.position + (-firePoint.transform.up * 15f));
+
+            #region hit
+            var hit = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (-transform.up * 5F));
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.CompareTag("Player"))
+                {
+                    rend.SetPosition(1, hit.point);
+
+                    if (time <= 0)
+                    {
+                        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += damage;
+                        time2 = startTime;
+                    }
+                    else
+                    {
+                        time -= Time.deltaTime;
+                    }
+                }
+            }
+            #endregion 
+
+            StartCoroutine(SizeUp());
+
+            yield return new WaitForSeconds(cooldownbtwshots);
+        }
+        
+
+        StartCoroutine(Atack());
+        movement.canMove = true;
+    }
+
+    IEnumerator SizeUp()
+    {
+        time = 0;
+        while (time < duration)
+        {
+            var vector = Vector2.Lerp(new Vector2(0.02f, 0), new Vector2(0.06f, 0), time / duration);
+            rend.startWidth = vector.x;
+            rend.endWidth = vector.x;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rend.endWidth = 0.06f;
+        rend.startWidth = 0.06f;
+        StartCoroutine(SizeDown());
+    }
+
+    IEnumerator SizeDown()
+    {
+        time = 0;
+        while (time < duration)
+        {
+            var vector = Vector2.Lerp(new Vector2(0.06f, 0), new Vector2(0.02f, 0), time / duration);
+            rend.startWidth = vector.x;
+            rend.endWidth = vector.x;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        rend.endWidth = 0.02f;
+        rend.startWidth = 0.02f;
+    }
+}

@@ -5,22 +5,26 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private GameObject targetSpot;
-    public GameObject minXnY;
-    public GameObject maxXnY;
+    [SerializeField]
+    private GameObject minXnY;
+    [SerializeField]
+    private GameObject maxXnY;
 
     public GameObject exploParticles;
-    public Vector3 targetPosition;
+
+    public bool canMove;
 
     private void Start()
     {
         targetSpot = new GameObject("targetSpotEnemy");
-        StartCoroutine(Move());
+        targetSpot.transform.position = Vector3.zero;
+        canMove = true;
+        StartCoroutine(GenerateTarget());
     }
 
-    IEnumerator Move()
+    IEnumerator GenerateTarget()
     {
-
-        StartCoroutine(Move2());
+        StartCoroutine(Move());
         do
         {
             maxXnY = GameObject.Find("maxXnY");
@@ -30,14 +34,20 @@ public class EnemyMovement : MonoBehaviour
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
             yield return new WaitForSeconds(Random.Range(2, 4.5f));
         } while (true);
-
     }
-    IEnumerator Move2()
+    IEnumerator Move()
     {
         while (true)
         {
-            transform.position = Vector2.Lerp(transform.position, targetSpot.transform.position, Time.deltaTime);
-            yield return new WaitForSeconds(.001f);
+            if (canMove)
+            {
+                transform.position = Vector2.Lerp(transform.position, targetSpot.transform.position, Time.deltaTime);
+                yield return new WaitForSeconds(.001f);
+            }
+            else
+            {
+                yield return null;
+            }
         }
 
     }

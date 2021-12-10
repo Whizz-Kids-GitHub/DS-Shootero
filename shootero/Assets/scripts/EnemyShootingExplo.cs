@@ -38,7 +38,7 @@ public class EnemyShootingExplo : MonoBehaviour
             sound.Play();
 
             curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.up * -force, ForceMode.Impulse);
-            curBullet.GetComponent<ExploBullet>().damage += damage;
+            curBullet.GetComponent<ExploBullet>().damage = damage;
             
             yield return new WaitForSeconds(Random.Range(3f, 5));
 

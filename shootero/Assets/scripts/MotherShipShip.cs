@@ -10,4 +10,4 @@ public class MotherShipShip : MonoBehaviour
     {
         mum.GetComponent<EnemyMotherShipBehaviour>().dronesAmount -= 1;
     }
-}
+}   
