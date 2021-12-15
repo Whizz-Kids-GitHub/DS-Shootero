@@ -123,7 +123,7 @@ MonoBehaviour:
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
   exploParticles: {fileID: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
+  canMove: 0
 --- !u!114 &2898543678963593790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  damage: 1
+  hp: 3
 --- !u!1 &7321952920290928443
 GameObject:
   m_ObjectHideFlags: 0

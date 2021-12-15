@@ -6,7 +6,13 @@ public class EnemyStatisctics : MonoBehaviour
 {
     public int damage;
     public int hp;
+    [HideInInspector]
+    public int startHp;
     private GameObject levelCounter;
+    private void Awake()
+    {
+        startHp = hp;
+    }
 
     private void Start()
     {

@@ -50,17 +50,11 @@ public class EnemyShootingPewPew : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(2, 4));
         movement.canMove = false;
 
-        var dir = player.position - firePoint.transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        firePoint.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-
-        yield return new WaitForSeconds(2);
-
-        firePoint.transform.rotation = Quaternion.Euler(0, 0, firePoint.transform.rotation.z -10);
-        var rotbefore = Quaternion.Euler(0, 0, firePoint.transform.rotation.z -10);
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, 0);
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, -10);
         for (int i = 0; i < 5; i++)
         {
-            firePoint.transform.rotation = Quaternion.Euler(0, 0, rotbefore.z + i * 5);
+            firePoint.transform.rotation = Quaternion.Euler(0, 0, -10 + i * 5);
 
             rend.SetPosition(0, firePoint.transform.position);
             rend.SetPosition(1, firePoint.transform.position + (-firePoint.transform.up * 15f));
@@ -87,12 +81,12 @@ public class EnemyShootingPewPew : MonoBehaviour
             }
             #endregion 
 
-            StartCoroutine(SizeUp());
+            //StartCoroutine(SizeUp());
 
             yield return new WaitForSeconds(cooldownbtwshots);
         }
-        
 
+        firePoint.transform.rotation = Quaternion.Euler(0, 0, 0);
         StartCoroutine(Atack());
         movement.canMove = true;
     }

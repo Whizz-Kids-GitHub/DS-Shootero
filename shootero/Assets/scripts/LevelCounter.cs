@@ -12,15 +12,13 @@ public class LevelCounter : MonoBehaviour
 
     public float dificultyScallingSpeed;
 
-    [SerializeField]
-    private int dificulty;
+    public int dificulty;
 
     [HideInInspector]
     public int enemyStats;
 
     private void Start()
     {
-
         enemyStats = 0;
         respMenager = GameObject.Find("EnemyRespawnMenager").GetComponent<EnemyRespawnMenager>();
 
@@ -57,7 +55,7 @@ public class LevelCounter : MonoBehaviour
 
                 respMenager.RespawnEnemies(1, 0);
             }
-            else if (1 < level && level <3) //uwu baka sussy
+            else if (1 < level && level < 3) //uwu baka sussy
             {
                 dificulty = 2;
                 enemyStats = 3;
