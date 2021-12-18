@@ -8,6 +8,7 @@ TagManager:
   - FallingObjects
   - tempSloeObject
   - Shield
+  - Boss
   layers:
   - Default
   - TransparentFX

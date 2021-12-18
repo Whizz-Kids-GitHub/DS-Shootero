@@ -7,21 +7,16 @@ public class EnemyShootingBoss : MonoBehaviour
     [Header("Burst Faze")]
     #region burst
     public GameObject bullet;
-
     public int burstLength;
     public float timeBetweenBursts;
-
     public float force;
-
     public float recoilRange;
-
     public GameObject firePoint;
-
     public AudioSource sound;
-
     public int damage = 1;
     private EnemyMovement movement;
     private Transform player;
+
     #endregion
     #region saw
     [SerializeField]
@@ -30,6 +25,16 @@ public class EnemyShootingBoss : MonoBehaviour
     private GameObject rocket;
     [SerializeField]
     private GameObject firePointRocket;
+    [SerializeField]
+    private Color angryBoi;
+    [SerializeField]
+    private GameObject[] eyes;
+    [SerializeField]
+    private GameObject particles;
+    [SerializeField]
+    private GameObject[] laserPoints;
+    [SerializeField]
+    private GameObject bulletRev;
     #endregion
 
     [Space(15)]
@@ -50,6 +55,12 @@ public class EnemyShootingBoss : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle + 180, Vector3.forward);
 
         sawBlade.transform.Rotate(Vector3.forward * -180 * Time.deltaTime);
+
+        if (Input.GetKeyUp("o"))
+        {
+            StartCoroutine(Faze3_1());
+            faze = 3;
+        }
     }
 
     private IEnumerator Atack1()
@@ -126,8 +137,10 @@ public class EnemyShootingBoss : MonoBehaviour
         } while (faze == 2);
     }
 
-    private IEnumerator Faze3()
+    private IEnumerator Faze3_1()
     {
+        movement.canMove = false;
+        #region cosmetics
         float time, duration;
         Vector3 startPosition;
         time = 0;
@@ -143,6 +156,64 @@ public class EnemyShootingBoss : MonoBehaviour
         transform.position = Vector3.zero;
 
         var dialogue = GameObject.Find("DialogueSystem");
+        dialogue.GetComponent<DialogueSystem>().StartDialogue(1);
+        yield return new WaitForSeconds(2);
+
+        GetComponent<SpriteRenderer>().color = angryBoi;
+        sawBlade.GetComponent<SpriteRenderer>().color = angryBoi;
+        Instantiate(particles, transform.position, Quaternion.identity);
+
+        for (int i = 0; i < eyes.Length; i++)
+        {
+            eyes[i].GetComponent<SpriteRenderer>().sortingOrder = 30;
+        }
+
+        time = 0;
+        duration = 2f;
+        startPosition = transform.position;
+
+        while (time < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, new Vector3(0, 5, 0), time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = new Vector3(0, 5, 0);
+        #endregion
+        StartCoroutine(Faze3_2());
+        do
+        {
+            yield return new WaitForSeconds(1);
+            for (int i = 0; i < laserPoints.Length; i++)
+            {
+                laserPoints[i].GetComponent<LaserPoint>().StartSequence(laserPoints[i].transform.position, 0.5f);
+
+            }
+
+        } while (faze == 3);
+    }
+    private IEnumerator Faze3_2()
+    {
+        do
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                GameObject curBullet = Instantiate(bulletRev, firePoint.transform.position, Quaternion.identity);
+                
+                var dir = player.position - transform.position;
+                var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                curBullet.transform.rotation = Quaternion.AngleAxis(angle + 180 + 90 + Random.Range(-40, 40), Vector3.forward);
+                var boss = this.gameObject;
+
+                curBullet.GetComponent<BuletReverse>().boss = boss;
+
+                var rb = curBullet.GetComponent<Rigidbody>();
+                rb.AddRelativeForce(curBullet.transform.up * 250f);
+                yield return new WaitForSeconds(0.3f);
+            }
+            yield return new WaitForSeconds(6);
+        } while (faze == 3);
+
     }
 
     IEnumerator RespRockets(int amount, GameObject bullet)
@@ -186,7 +257,7 @@ public class EnemyShootingBoss : MonoBehaviour
     }
     #endregion
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         var stats = this.GetComponent<EnemyStatisctics>();
 
@@ -202,7 +273,7 @@ public class EnemyShootingBoss : MonoBehaviour
                 }
                 if (faze == 3)
                 {
-                    StartCoroutine(Faze3());
+                    StartCoroutine(Faze3_1());
                 }
             }
         }
