@@ -21,7 +21,7 @@ public class BossRocket : MonoBehaviour
         Invoke("Destro", 10);
 
         Target();
-        Dash();
+        StartCoroutine(Dash());
         
     }
     void Target()
@@ -30,13 +30,21 @@ public class BossRocket : MonoBehaviour
             Random.Range(min.transform.position.y, max.transform.position.y));
     }
 
-    void Dash()
+    private IEnumerator Dash()
     {
-        while (Vector3.Distance(transform.position, target) >= 0.3f)
+        float time, duration;
+        Vector3 startPosition;
+        time = 0;
+        duration = 0.3f;
+        startPosition = transform.position;
+
+        while (time < duration)
         {
-            var speed = 10f;
-            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
+            transform.position = Vector3.Lerp(startPosition, target, time / duration);
+            time += Time.deltaTime;
+            yield return null;
         }
+        transform.position = target;
 
         var playerPlace = player.transform.position;
 
@@ -56,6 +64,7 @@ public class BossRocket : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            player.GetComponent<PlayerMovement>().Damage += 5;
             var particle = Instantiate(particles, transform.position, Quaternion.identity);
             particle.transform.localScale = new Vector3(0.1f, 0.1f, 0);
             Destro();

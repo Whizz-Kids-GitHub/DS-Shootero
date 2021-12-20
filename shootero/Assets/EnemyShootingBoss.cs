@@ -35,6 +35,9 @@ public class EnemyShootingBoss : MonoBehaviour
     private GameObject[] laserPoints;
     [SerializeField]
     private GameObject bulletRev;
+    [SerializeField]
+    private GameObject enemyGuard;
+    public bool rotate;
     #endregion
 
     [Space(15)]
@@ -43,6 +46,8 @@ public class EnemyShootingBoss : MonoBehaviour
     private int faze;
     private void Start()
     {
+        faze = 1;
+        rotate = true;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movement = GetComponent<EnemyMovement>();
         StartCoroutine(Atack1());
@@ -50,9 +55,12 @@ public class EnemyShootingBoss : MonoBehaviour
 
     private void Update()
     {
-        var dir = player.position - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle + 180, Vector3.forward);
+        if (rotate)
+        {
+            var dir = player.position - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle + 180, Vector3.forward);
+        }
 
         sawBlade.transform.Rotate(Vector3.forward * -180 * Time.deltaTime);
 
@@ -60,6 +68,16 @@ public class EnemyShootingBoss : MonoBehaviour
         {
             StartCoroutine(Faze3_1());
             faze = 3;
+        }
+        if (Input.GetKeyUp("p"))
+        {
+            StartCoroutine(Atack2());
+            faze = 2;
+        }
+        if (Input.GetKeyUp("["))
+        {
+            StartCoroutine(Faze4());
+            faze = 4;
         }
     }
 
@@ -94,7 +112,6 @@ public class EnemyShootingBoss : MonoBehaviour
             StartCoroutine(Atack1());
         }
     }
-
     private IEnumerator Atack2()
     {
         movement.canMove = false;
@@ -136,7 +153,6 @@ public class EnemyShootingBoss : MonoBehaviour
 
         } while (faze == 2);
     }
-
     private IEnumerator Faze3_1()
     {
         movement.canMove = false;
@@ -186,20 +202,22 @@ public class EnemyShootingBoss : MonoBehaviour
             yield return new WaitForSeconds(1);
             for (int i = 0; i < laserPoints.Length; i++)
             {
+                rotate = false;
                 laserPoints[i].GetComponent<LaserPoint>().StartSequence(laserPoints[i].transform.position, 0.5f);
+                var we = this.gameObject;
+                laserPoints[i].GetComponent<LaserPoint>().boss = we;
 
             }
 
-        } while (faze == 3);
+        } while (faze == 3 || faze == 4);
     }
     private IEnumerator Faze3_2()
     {
         do
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 13; i++)
             {
-                GameObject curBullet = Instantiate(bulletRev, firePoint.transform.position, Quaternion.identity);
-                
+                var curBullet = Instantiate(bulletRev, firePoint.transform.position, Quaternion.identity);
                 var dir = player.position - transform.position;
                 var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 curBullet.transform.rotation = Quaternion.AngleAxis(angle + 180 + 90 + Random.Range(-40, 40), Vector3.forward);
@@ -207,13 +225,37 @@ public class EnemyShootingBoss : MonoBehaviour
 
                 curBullet.GetComponent<BuletReverse>().boss = boss;
 
-                var rb = curBullet.GetComponent<Rigidbody>();
-                rb.AddRelativeForce(curBullet.transform.up * 250f);
+                var rb = curBullet.GetComponent<Rigidbody2D>();
+                rb.AddForce(curBullet.transform.up * 350f);
                 yield return new WaitForSeconds(0.3f);
             }
             yield return new WaitForSeconds(6);
         } while (faze == 3);
 
+    }
+    private IEnumerator Faze4()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < 2; i++)
+        {
+            if (faze == 4)
+            {
+                Instantiate(enemyGuard, transform.position, Quaternion.identity);
+                yield return new WaitForSeconds(15f);
+            }
+        }
+    }
+    private IEnumerator Death()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Vector3 position = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f),
+                transform.position.y + Random.Range(-0.5f, 0.5f), 0);
+            Instantiate(particles, transform.position, Quaternion.identity);
+        }
+
+        Destroy(gameObject);
     }
 
     IEnumerator RespRockets(int amount, GameObject bullet)
@@ -257,7 +299,7 @@ public class EnemyShootingBoss : MonoBehaviour
     }
     #endregion
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         var stats = this.GetComponent<EnemyStatisctics>();
 
@@ -275,7 +317,19 @@ public class EnemyShootingBoss : MonoBehaviour
                 {
                     StartCoroutine(Faze3_1());
                 }
+                if (faze == 4)
+                {
+                    StartCoroutine(Faze4());
+                }
+                if (faze == 5)
+                {
+                    StartCoroutine(Death());
+                }
             }
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
         }
     }
 }

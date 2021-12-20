@@ -10,6 +10,7 @@ public class LaserPoint : MonoBehaviour
 
     private float time, duration = 0.15f;
     private LineRenderer rend;
+    public GameObject boss;
     public void StartSequence(Vector3 start, float timeBtwWarningAndShot)
     {
         StartCoroutine(CastLaser(start, timeBtwWarningAndShot));
@@ -40,7 +41,26 @@ public class LaserPoint : MonoBehaviour
 
         rend.SetPosition(0, start);
         rend.SetPosition(1, transform.up * -20);
+        Hit();
+        boss.GetComponent<EnemyShootingBoss>().rotate = true;
+
         StartCoroutine(SizeUp());
+    }
+
+    private void Hit()
+    {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.up, out hit, 20);
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.name);
+            if (hit.collider.CompareTag("Player"))
+            {
+                rend.SetPosition(1, hit.point);
+                Debug.Log("hit");
+                var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+            }
+        }
     }
 
     IEnumerator SizeUp()
