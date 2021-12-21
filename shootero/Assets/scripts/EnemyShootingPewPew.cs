@@ -59,29 +59,22 @@ public class EnemyShootingPewPew : MonoBehaviour
             rend.SetPosition(0, firePoint.transform.position);
             rend.SetPosition(1, firePoint.transform.position + (-firePoint.transform.up * 15f));
 
-            #region hit
-            var hit = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (-transform.up * 5F));
+            //#region hit
+            //RaycastHit hit;
+            //Physics.Raycast(transform.position, transform.up, out hit, 20);
+            //if (hit.collider != null)
+            //{
+            //    Debug.Log(hit.collider.name);
+            //    if (hit.collider.CompareTag("Player"))
+            //    {
+            //        rend.SetPosition(1, hit.point);
+            //        Debug.Log("hit");
+            //        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+            //    }
+            //}
+            //#endregion 
 
-            if (hit.collider != null)
-            {
-                if (hit.collider.gameObject.CompareTag("Player"))
-                {
-                    rend.SetPosition(1, hit.point);
-
-                    if (time <= 0)
-                    {
-                        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += damage;
-                        time2 = startTime;
-                    }
-                    else
-                    {
-                        time -= Time.deltaTime;
-                    }
-                }
-            }
-            #endregion 
-
-            //StartCoroutine(SizeUp());
+            StartCoroutine(SizeUp());
 
             yield return new WaitForSeconds(cooldownbtwshots);
         }
