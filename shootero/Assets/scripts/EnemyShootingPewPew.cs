@@ -69,7 +69,8 @@ public class EnemyShootingPewPew : MonoBehaviour
                 {
                     rend.SetPosition(1, hit.point);
                     Debug.Log("hit");
-                    var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+                    PlayerMovement.Instance.ProcessDamage(10);
+                    //var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
                 }
             }
             #endregion 

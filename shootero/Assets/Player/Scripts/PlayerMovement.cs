@@ -37,6 +37,19 @@ public class PlayerMovement : MonoBehaviour
     private GameObject child;
     private bool alive = true;
 
+    private static PlayerMovement instance;
+    public static PlayerMovement Instance { get => instance; }
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start()
     {
@@ -51,29 +64,49 @@ public class PlayerMovement : MonoBehaviour
         RightThruster.SetActive(false);
     }
 
+    public void ProcessDamage(int damage)
+    {
+        if(!invunerable && alive)
+        {
+            pHealth = pHealth - damage > 0 ? pHealth - damage : 0;
+
+            TryToDie();
+        }
+    }
+
+    private void TryToDie()
+    {
+        if(pHealth <= 0)
+        {
+            alive = false;
+            Instantiate(FireEffect, this.transform);
+            Invoke(nameof(Death), 2);
+        }
+    }
+
     void Update()
     {
-        if(Damage != 0 && !invunerable && alive)
-        {
-            if(pHealth - Damage > 0)
-            {
-                pHealth -= Damage;
-                Damage = 0;
-            }
-            else
-            {
-                pHealth = 0;
-                Damage = 0;
-            }
+        //if(Damage != 0 && !invunerable && alive)
+        //{
+        //    if(pHealth - Damage > 0)
+        //    {
+        //        pHealth -= Damage;
+        //        Damage = 0;
+        //    }
+        //    else
+        //    {
+        //        pHealth = 0;
+        //        Damage = 0;
+        //    }
 
-            if (pHealth <= 0)
-            {
-                alive = false;
+        //    if (pHealth <= 0)
+        //    {
+        //        alive = false;
 
-                Instantiate(FireEffect, this.transform);
-                Invoke("Death", 2);
-            }
-        }
+        //        Instantiate(FireEffect, this.transform);
+        //        Invoke("Death", 2);
+        //    }
+        //}
         
         if (pLastHealth != pHealth)
         {
