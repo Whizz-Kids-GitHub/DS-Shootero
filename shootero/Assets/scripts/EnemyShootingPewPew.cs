@@ -50,29 +50,29 @@ public class EnemyShootingPewPew : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(2, 4));
         movement.canMove = false;
 
-        firePoint.transform.rotation = Quaternion.Euler(0, 0, 0);
-        firePoint.transform.rotation = Quaternion.Euler(0, 0, -10);
+        firePoint.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        firePoint.transform.localRotation = Quaternion.Euler(0, 0, -10);
         for (int i = 0; i < 5; i++)
         {
-            firePoint.transform.rotation = Quaternion.Euler(0, 0, -10 + i * 5);
+            firePoint.transform.localRotation = Quaternion.Euler(0, 0, -10 + i * 5 + -180);
 
             rend.SetPosition(0, firePoint.transform.position);
             rend.SetPosition(1, firePoint.transform.position + (-firePoint.transform.up * 15f));
 
-            //#region hit
-            //RaycastHit hit;
-            //Physics.Raycast(transform.position, transform.up, out hit, 20);
-            //if (hit.collider != null)
-            //{
-            //    Debug.Log(hit.collider.name);
-            //    if (hit.collider.CompareTag("Player"))
-            //    {
-            //        rend.SetPosition(1, hit.point);
-            //        Debug.Log("hit");
-            //        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
-            //    }
-            //}
-            //#endregion 
+            #region hit
+            RaycastHit hit;
+            Physics.Raycast(transform.position, firePoint.transform.position + (-firePoint.transform.up * 15f), out hit, Mathf.Infinity);
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.name);
+                if (hit.collider.CompareTag("Player"))
+                {
+                    rend.SetPosition(1, hit.point);
+                    Debug.Log("hit");
+                    var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+                }
+            }
+            #endregion 
 
             StartCoroutine(SizeUp());
 
