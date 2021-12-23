@@ -38,7 +38,7 @@ public class BuletReverse : MonoBehaviour
         var player = GameObject.FindGameObjectWithTag("Player");
         if (Vector3.Distance(transform.position, player.transform.position) <= 0.5f)
         {
-            player.gameObject.GetComponent<PlayerMovement>().Damage += 15;
+            PlayerMovement.Instance.ProcessDamage(10);
             GameObject curParticles = Instantiate(particles, transform.position, Quaternion.identity);
             curParticles.transform.localScale = new Vector3(0.3f, 0.3f, 0);
             Destroy(gameObject);

@@ -15,7 +15,7 @@ public class BulletBurst : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += damage;
+            PlayerMovement.Instance.ProcessDamage(damage);
             Destroy(gameObject);
         }
     }

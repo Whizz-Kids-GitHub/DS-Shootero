@@ -9,6 +9,8 @@ public class EnemyStatisctics : MonoBehaviour
     [HideInInspector]
     public int startHp;
     private GameObject levelCounter;
+    [SerializeField]
+    private bool isBoss;
     private void Awake()
     {
         startHp = hp;
@@ -46,16 +48,16 @@ public class EnemyStatisctics : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("PlayerBullet"))
-    //    {
-    //        if (hp <= 0)
-    //        {
-    //            Destroy(gameObject);
-    //        }
-    //    }   
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<BulletScript>())
+        {
+            if (hp <= 0 && !isBoss)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
     private void OnDestroy()
     {
         if (levelCounter = GameObject.Find("LevelCounter"))

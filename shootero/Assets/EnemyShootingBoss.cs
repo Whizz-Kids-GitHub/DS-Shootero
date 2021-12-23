@@ -28,8 +28,6 @@ public class EnemyShootingBoss : MonoBehaviour
     [SerializeField]
     private Color angryBoi;
     [SerializeField]
-    private GameObject[] eyes;
-    [SerializeField]
     private GameObject particles;
     [SerializeField]
     private GameObject[] laserPoints;
@@ -179,11 +177,6 @@ public class EnemyShootingBoss : MonoBehaviour
         sawBlade.GetComponent<SpriteRenderer>().color = angryBoi;
         Instantiate(particles, transform.position, Quaternion.identity);
 
-        for (int i = 0; i < eyes.Length; i++)
-        {
-            eyes[i].GetComponent<SpriteRenderer>().sortingOrder = 30;
-        }
-
         time = 0;
         duration = 2f;
         startPosition = transform.position;
@@ -252,7 +245,7 @@ public class EnemyShootingBoss : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             Vector3 position = new Vector3(transform.position.x + Random.Range(-0.5f, 0.5f),
                 transform.position.y + Random.Range(-0.5f, 0.5f), 0);
-            Instantiate(particles, transform.position, Quaternion.identity);
+            Instantiate(particles, position, Quaternion.identity);
         }
 
         Destroy(gameObject);

@@ -64,7 +64,7 @@ public class BossRocket : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player.GetComponent<PlayerMovement>().Damage += 5;
+            PlayerMovement.Instance.ProcessDamage(5);
             var particle = Instantiate(particles, transform.position, Quaternion.identity);
             particle.transform.localScale = new Vector3(0.1f, 0.1f, 0);
             Destro();
