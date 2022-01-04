@@ -64,10 +64,8 @@ public class EnemyShootingPewPew : MonoBehaviour
             Physics.Raycast(transform.position, firePoint.transform.position + (-firePoint.transform.up * 15f), out hit, Mathf.Infinity);
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.name);
                 if (hit.collider.CompareTag("Player"))
                 {
-                    rend.SetPosition(1, hit.point);
                     Debug.Log("hit");
                     PlayerMovement.Instance.ProcessDamage(10);
                     //var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;

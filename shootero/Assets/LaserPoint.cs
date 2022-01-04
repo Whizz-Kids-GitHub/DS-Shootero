@@ -50,15 +50,13 @@ public class LaserPoint : MonoBehaviour
     private void Hit()
     {
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.up, out hit, 20);
+        Physics.Raycast(transform.position, transform.position + (-transform.up * 15f), out hit, Mathf.Infinity);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.name);
             if (hit.collider.CompareTag("Player"))
             {
                 rend.SetPosition(1, hit.point);
-                Debug.Log("hit");
-                var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+                PlayerMovement.Instance.ProcessDamage(10);
             }
         }
     }
@@ -93,4 +91,5 @@ public class LaserPoint : MonoBehaviour
         rend.endWidth = 0.00f;
         rend.startWidth = 0.00f;
     }
+
 }

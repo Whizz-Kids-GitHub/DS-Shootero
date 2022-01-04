@@ -39,7 +39,7 @@ public class ExploBullet : MonoBehaviour
         {
             GameObject explo = Instantiate(explosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
 
-            if (Vector3.Distance(transform.position, playerPlace) <= 0.5) player.GetComponent<PlayerMovement>().Damage += damage;
+            if (Vector3.Distance(transform.position, playerPlace) <= 0.5) PlayerMovement.Instance.ProcessDamage(damage);
 
             Destroy(gameObject);
         }
