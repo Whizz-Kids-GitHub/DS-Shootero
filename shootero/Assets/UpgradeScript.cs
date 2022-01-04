@@ -19,6 +19,9 @@ public class UpgradeScript : MonoBehaviour
 
     public int[] UpgradeNum = new int[3];
     public int[] rarity = new int[3];
+    [Space(15)]
+
+    public bool[] avaliable;
 
     void Start()
     {
@@ -69,7 +72,6 @@ public class UpgradeScript : MonoBehaviour
 [System.Serializable]
 public class Upgrades
 {
-    
     public UpgradeStats[] UpgradeStats;
 }
 
@@ -85,4 +87,8 @@ public class UpgradeStats
 {
     public GameObject UpgradeObj;
     public Sprite Icon;
+    [Space(15)]
+
+    public int number;
+    public bool change;
 }
