@@ -68,6 +68,5 @@ public class EnemyStatisctics : MonoBehaviour
                 levelCounter.GetComponent<LevelCounter>().StartSequence();
             }
         }
-
     }
 }

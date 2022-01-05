@@ -21,7 +21,7 @@ public class EnemyShootingBurst : MonoBehaviour
     }
     private void Update()
     {
-        var dir = player.position - transform.position;
+        var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
     }
