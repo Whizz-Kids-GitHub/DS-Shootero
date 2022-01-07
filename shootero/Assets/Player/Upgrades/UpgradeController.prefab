@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2114161028142999500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114161028142999502}
+  - component: {fileID: 2114161028142999501}
+  m_Layer: 0
+  m_Name: UpgradeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2114161028142999502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114161028142999500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6198282, y: 2.1739569, z: -6.9733434}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2114161028142999501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114161028142999500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653a3e3ff71e197488094ee07925b7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 0
+  Upgrades:
+  - UpgradeStats:
+    - UpgradeObj: {fileID: 667737861180806834, guid: 034a7b13b5028154e9fb0db435d16861, type: 3}
+      Icon: {fileID: 0}
+  - UpgradeStats:
+    - UpgradeObj: {fileID: 0}
+      Icon: {fileID: 0}
+  - UpgradeStats:
+    - UpgradeObj: {fileID: 0}
+      Icon: {fileID: 0}
+  - UpgradeStats:
+    - UpgradeObj: {fileID: 0}
+      Icon: {fileID: 0}
+  Rarities:
+  - Rarity: 64000000000000000000000000000000
+  - Rarity: 4b000000190000000000000000000000
+  - Rarity: 41000000230000000000000000000000
+  - Rarity: 37000000230000000a00000000000000
+  - Rarity: 28000000280000001400000000000000
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  UpgradeNum: 000000000000000000000000
+  rarity: 000000000000000000000000

@@ -5,14 +5,14 @@ using UnityEngine;
 public class ExploBullet : MonoBehaviour
 {
     private Transform player;
-    public GameObject explosionEffect;
+    [SerializeField]
+    private GameObject explosionEffect;
     private Vector3 playerPlace;
-    private Rigidbody rb;
-    public float slowFactor = 0.1f;
+
+    public int damage = 5;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerPlace = player.position;
@@ -20,21 +20,17 @@ public class ExploBullet : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, playerPlace) < 3f)
-        {
-            float x = rb.velocity.x;
-            float y = rb.velocity.y;
-            rb.velocity = new Vector3(x -= slowFactor * Time.deltaTime, y -= slowFactor * Time.deltaTime, 0);
-        }
-    }
+        transform.position = Vector3.Lerp(transform.position, playerPlace, Time.deltaTime);
 
-    private void OnTriggerEnter(Collider collision)
-    {
-
-        Destroy(gameObject);
-        if (collision.gameObject.CompareTag("Player"))
+        #region Damage
+        if (Vector3.Distance(transform.position, playerPlace) <= 0.5)
         {
             GameObject explo = Instantiate(explosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
+
+            if (Vector3.Distance(transform.position, playerPlace) <= 0.5) PlayerMovement.Instance.ProcessDamage(damage);
+
+            Destroy(gameObject);
         }
+        #endregion
     }
 }
