@@ -42,10 +42,6 @@ public class EnemyStatisctics : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (Input.GetKeyDown("k"))
-        {
-            Debug.Log(damage);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

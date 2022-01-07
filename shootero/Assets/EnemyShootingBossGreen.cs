@@ -21,6 +21,8 @@ public class EnemyShootingBossGreen : MonoBehaviour
     private LineRenderer rend;
     [SerializeField]
     private GameObject particles;
+    [SerializeField]
+    private LayerMask _layerMask;
     private void Start()
     {
         duration = .49f;
@@ -106,20 +108,16 @@ public class EnemyShootingBossGreen : MonoBehaviour
 
     private IEnumerator Hit()
     {
-        var hit2 = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (firePoint.transform.up * 20f));
+        var hit2 = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (firePoint.transform.up * 20f), _layerMask);
 
-        if (hit2.collider != null)
+        while (hit2.collider.CompareTag("Enemy") || hit2.collider.CompareTag("Shield"))
         {
-            
-            while (hit2.collider.CompareTag("Enemy") || hit2.collider.CompareTag("Shield"))
-            {
-                Debug.Log(hit2.collider.gameObject.name);
-                var particlesPosition = hit2.collider.gameObject.transform.position;
-                Destroy(hit2.collider.gameObject);
-                StartCoroutine(Particles(particlesPosition));
-                
-                hit2 = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (firePoint.transform.up * 20f));
-            }
+            var particlesPosition = hit2.collider.gameObject.transform.position;
+
+            StartCoroutine(Particles(particlesPosition));
+            Destroy(hit2.collider.gameObject);
+
+            hit2 = Physics2D.Linecast(firePoint.transform.position, firePoint.transform.position + (firePoint.transform.up * 20f));
         }
 
         RaycastHit hit;
@@ -181,5 +179,19 @@ public class EnemyShootingBossGreen : MonoBehaviour
         }
         rend.endWidth = 0.00f;
         rend.startWidth = 0.00f;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var stats = this.GetComponent<EnemyStatisctics>();
+
+        if (collision.gameObject.GetComponent<BulletScript>())
+        {
+            if (stats.hp <= 0)
+            {
+                stats.hp = stats.startHp;
+                faze += 1;
+            }
+        }
     }
 }

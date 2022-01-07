@@ -14,6 +14,12 @@ public class EnemyShootingElite : MonoBehaviour
     {
         StartCoroutine(Atack());
     }
+    private void Update()
+    {
+        var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+    }
     private IEnumerator Atack()
     {
         var movement = GetComponent<EnemyMovement>();

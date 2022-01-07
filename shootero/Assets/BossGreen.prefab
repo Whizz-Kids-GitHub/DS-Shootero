@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2001675251425945750}
   - component: {fileID: 2001675251425945751}
   - component: {fileID: 2001675251425945752}
-  m_Layer: 0
+  - component: {fileID: 991546126}
+  m_Layer: 2
   m_Name: BossGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,10 +141,13 @@ MonoBehaviour:
   firePoint: {fileID: 2001675251484327163}
   dronesPoint: {fileID: 2001675252042512121}
   drone1: {fileID: 8919681059642249108, guid: 77a49c9e88568804e9d8e6a3ed21a62b, type: 3}
-  drone2: {fileID: 0}
+  drone2: {fileID: 925566655718193080, guid: abc14353b501ef44c8d0cf27c30c381f, type: 3}
   sparkles: {fileID: 8527479294086071787}
   faze: 0
   particles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!120 &2001675251425945752
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -242,6 +246,22 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &991546126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001675251425945746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  hp: 200
+  startHp: 0
+  isBoss: 1
 --- !u!1 &2001675251484327163
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001675251484327164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Firepoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001675251484327163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.476, z: 0}
+  m_LocalPosition: {x: -0.0118, y: -0.479, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8527479294086071782}
@@ -282,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001675252042512122}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DronePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,6 +333,10 @@ PrefabInstance:
     - target: {fileID: 2931475459623906530, guid: 3834c07eb53bba749810b6267e708870, type: 3}
       propertyPath: m_Name
       value: SparklesLaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2931475459623906530, guid: 3834c07eb53bba749810b6267e708870, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2931475459623906543, guid: 3834c07eb53bba749810b6267e708870, type: 3}
       propertyPath: m_RootOrder
