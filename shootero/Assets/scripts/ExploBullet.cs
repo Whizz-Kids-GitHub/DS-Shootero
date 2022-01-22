@@ -13,7 +13,6 @@ public class ExploBullet : MonoBehaviour
 
     private void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerPlace = player.position;
     }
@@ -23,11 +22,15 @@ public class ExploBullet : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, playerPlace, Time.deltaTime);
 
         #region Damage
-        if (Vector3.Distance(transform.position, playerPlace) <= 0.5)
+        if (Vector3.Distance(transform.position, playerPlace) <= 0.2f)
         {
-            GameObject explo = Instantiate(explosionEffect, transform.position, new Quaternion(0, 0, 0, 0));
-
-            if (Vector3.Distance(transform.position, playerPlace) <= 0.5) PlayerMovement.Instance.ProcessDamage(damage);
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            
+            if (Vector3.Distance(transform.position, player.position) <= 0.5f)
+            {
+                PlayerMovement.Instance.ProcessDamage(damage);
+            }
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8772156213030673823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.006, y: 0.502, z: 0}
+  m_LocalPosition: {x: -0.006, y: -0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8772156213414922587}
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8772156213414922586}
   - component: {fileID: 8772156213414922591}
   - component: {fileID: 8772156213414922584}
+  - component: {fileID: 350552993}
   m_Layer: 0
   m_Name: EnemyLaserPewPew
   m_TagString: Untagged
@@ -106,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
+  m_Sprite: {fileID: -6050791793949017677, guid: 509384bc07a6d5b49a323af6ec375639, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
-  exploParticles: {fileID: 0}
+  exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
   canMove: 0
 --- !u!114 &8772156213414922586
 MonoBehaviour:
@@ -147,6 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   hp: 0
+  startHp: 0
+  isBoss: 0
 --- !u!114 &8772156213414922591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,3 +264,22 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!95 &350552993
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8772156213414922597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94bc6ecc78e89e243a56aabb4eea9f45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

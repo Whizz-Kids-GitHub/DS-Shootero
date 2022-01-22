@@ -34,7 +34,7 @@ public class EnemyShootingPewPew : MonoBehaviour
     {
         var dir = player.position - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 
         rend.SetPosition(0, firePoint.transform.position);
 
@@ -57,11 +57,11 @@ public class EnemyShootingPewPew : MonoBehaviour
             firePoint.transform.localRotation = Quaternion.Euler(0, 0, -10 + i * 5 + -180);
 
             rend.SetPosition(0, firePoint.transform.position);
-            rend.SetPosition(1, firePoint.transform.position + (-firePoint.transform.up * 15f));
+            rend.SetPosition(1, firePoint.transform.position + (firePoint.transform.up * 15f));
 
             #region hit
             RaycastHit hit;
-            Physics.Raycast(transform.position, firePoint.transform.position + (-firePoint.transform.up * 15f), out hit, Mathf.Infinity);
+            Physics.Raycast(transform.position, firePoint.transform.position + (firePoint.transform.up * 15f), out hit, Mathf.Infinity);
             if (hit.collider != null)
             {
                 if (hit.collider.CompareTag("Player"))

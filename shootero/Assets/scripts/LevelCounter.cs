@@ -46,7 +46,7 @@ public class LevelCounter : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             respMenager = GameObject.Find("EnemyRespawnMenager").GetComponent<EnemyRespawnMenager>();
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1f);
 
             if (level == 1)
             {
@@ -55,7 +55,7 @@ public class LevelCounter : MonoBehaviour
 
                 respMenager.RespawnEnemies(1, 0);
             }
-            else if (1 < level && level < 3) //uwu baka sussy
+            else if (1 < level && level <3) //uwu baka sussy
             {
                 dificulty = 2;
                 enemyStats = 3;

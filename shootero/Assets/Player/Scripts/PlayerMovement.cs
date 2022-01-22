@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     [HideInInspector]
-    private float speedModifier = 1f;
+    public float speedModifier = 1f;
     public float minRange;
 
     private Vector2 oMoveInput; //original

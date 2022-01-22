@@ -39,7 +39,7 @@ public class EnemyShootingSloe : MonoBehaviour
 
             curBullet.GetComponent<Rigidbody>().AddRelativeForce(Vector3.down * force, ForceMode.Impulse);
 
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(5f);
         } while (true);
     }
 }

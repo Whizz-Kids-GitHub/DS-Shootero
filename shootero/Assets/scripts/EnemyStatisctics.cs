@@ -22,17 +22,17 @@ public class EnemyStatisctics : MonoBehaviour
 
         damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
 
-        if (this.TryGetComponent<EnemyShootingLaser>(out EnemyShootingLaser shootingScriptL))
-        {
-            shootingScriptL.damage = damage;
-        }
-        else if (this.TryGetComponent<EnemyShootingBurst>(out EnemyShootingBurst shootingScriptB))
+        if (this.TryGetComponent<EnemyShootingBurst>(out EnemyShootingBurst shootingScriptB))
         {
             shootingScriptB.damage = damage;
         }
         else if (this.TryGetComponent<EnemyShootingExplo>(out EnemyShootingExplo shootingScriptEX))
         {
             shootingScriptEX.damage = damage;
+        }
+        else if (this.TryGetComponent<EnemyShootingPewPew>(out EnemyShootingPewPew shootingScriptPP))
+        {
+            shootingScriptPP.damage = damage;
         }
 
     }
@@ -62,6 +62,7 @@ public class EnemyStatisctics : MonoBehaviour
             {
                 levelCounter.GetComponent<LevelCounter>().deaths += 1;
                 levelCounter.GetComponent<LevelCounter>().StartSequence();
+                GameObject.Find("GoldCounter").GetComponent<GoldCounter>().CountGold();
             }
         }
     }
