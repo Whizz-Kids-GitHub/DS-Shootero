@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3647216445498203972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.43, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3647216445858244523}
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 3647216445858244523}
   - component: {fileID: 3647216445858244520}
   - component: {fileID: 3647216445858244517}
+  - component: {fileID: 3647216445887505359}
   m_Layer: 0
   m_Name: BossBlack
   m_TagString: Untagged
@@ -128,3 +129,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletToSummonPortal: {fileID: 1741190772115829732, guid: 5ad5f12b75d948046b528b8aca6059a0, type: 3}
   firePoint: {fileID: 3647216445498203972}
+--- !u!95 &3647216445887505359
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647216445858244521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67e95f988dca88e4190894b6ee58bfc8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

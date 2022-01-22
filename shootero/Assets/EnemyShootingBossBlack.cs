@@ -21,21 +21,25 @@ public class EnemyShootingBossBlack : MonoBehaviour
 
         while (faze == 1)
         {
-            Instantiate(bulletToSummonPortal, firePoint.transform.position, Quaternion.identity);
+            var curBullet = Instantiate(bulletToSummonPortal, firePoint.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
 
             
             StartCoroutine(LerpPosition(new Vector3(transform.position.x + 4, transform.position.y, 0), 1));
             yield return new WaitForSeconds(0.1f);
             this.GetComponent<Animator>().SetTrigger("Roll");
+
             yield return new WaitForSeconds(1f);
 
             var curSprite = this.GetComponent<SpriteRenderer>().sprite;
             this.GetComponent<SpriteRenderer>().sprite = null;
+            
+
+            while (!curBullet.GetComponent<BulletToSummonPortal>().currentPortal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("PortalOtw"))
+            {
+                Debug.Log("nie");
+            }
             transform.position = new Vector3(transform.position.x, transform.position.y - 5, 0);
-
-            yield return new WaitForSeconds(1.5f);
-
             this.GetComponent<SpriteRenderer>().sprite = curSprite;
             StartCoroutine(LerpPosition(new Vector3(transform.position.x - 4, transform.position.y, 0), 1f));
 
