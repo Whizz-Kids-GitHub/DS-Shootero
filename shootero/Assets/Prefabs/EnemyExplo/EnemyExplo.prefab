@@ -262,7 +262,7 @@ MonoBehaviour:
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
   exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
-  targetPosition: {x: 0, y: 0, z: 0}
+  canMove: 0
 --- !u!114 &5101292642805831379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ MonoBehaviour:
   player: {fileID: 0}
   sound: {fileID: 5101292642177757894}
   firePoint: {fileID: 5101292642786397158}
-  force: 11
+  force: 1
   damage: 0
 --- !u!95 &532793399109302970
 Animator:
@@ -314,6 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   hp: 3
+  startHp: 0
+  isBoss: 0
 --- !u!50 &7528319735452999795
 Rigidbody2D:
   serializedVersion: 4

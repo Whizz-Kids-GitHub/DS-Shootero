@@ -6,7 +6,7 @@ public class StartGameSystem : MonoBehaviour
 {
     GameObject mainCamera;
     int howManyAnimators;
-    bool wasClicked;
+    public bool wasClicked;
     public float cameraShake;
     public Animator[] animators;
     public AudioSource[] sounds;
