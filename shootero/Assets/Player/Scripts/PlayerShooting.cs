@@ -11,8 +11,12 @@ public class PlayerShooting : MonoBehaviour
 
     public Bullet[] Bullet;
 
+    private PlayerMovement PlayrMv;
+
     void Start()
     {
+        PlayrMv = FindObjectOfType<PlayerMovement>();
+        
         for (int i = 0; i < Bullet.Length; i++)
         {
             Bullet[i].firePoint.position = new Vector3(Bullet[i].firePoint.position.x - 1.24f, Bullet[i].firePoint.position.y + 0.25f, Bullet[i].firePoint.position.z);
@@ -34,6 +38,11 @@ public class PlayerShooting : MonoBehaviour
                     Bullet[i].lastBullet.GetComponent<Rigidbody2D>().AddForce(Bullet[i].firePoint.up * Bullet[i].bulSpeed);
 
                     Bullet[i].lastBullet.GetComponent<BulletScript>().damage = Bullet[i].damage;
+
+                    if(PlayrMv.invunerable == true && FindObjectOfType<InvincibilityShield>().Heal == true)
+                    {
+                        Bullet[i].lastBullet.GetComponent<BulletScript>().HealPlr = true;
+                    }
 
                     StartCoroutine(shoot(i));
                 }

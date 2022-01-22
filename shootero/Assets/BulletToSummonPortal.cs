@@ -6,6 +6,8 @@ public class BulletToSummonPortal : MonoBehaviour
 {
     [SerializeField]
     private GameObject portal;
+    [HideInInspector]
+    public GameObject currentPortal;
     private void Start()
     {
         StartCoroutine(LerpPosition(new Vector3(transform.position.x + 4, transform.position.y, 0), 0.5f));
@@ -36,6 +38,7 @@ public class BulletToSummonPortal : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y - 5, 0);
         curPortal = Instantiate(portal, transform.position, Quaternion.identity);
+        currentPortal = curPortal;
 
         yield return new WaitForSeconds(2f);
 

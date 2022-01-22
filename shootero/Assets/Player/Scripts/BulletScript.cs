@@ -11,6 +11,15 @@ public class BulletScript : MonoBehaviour
 
     [HideInInspector]
     public bool hit;
+    [HideInInspector]
+    public bool HealPlr;
+    [HideInInspector]
+    public PlayerMovement PlayrMv;
+
+    private void Start()
+    {
+        PlayrMv = FindObjectOfType<PlayerMovement>();        
+    }
 
     private void OnTiggerEnter2D(Collider2D Enemy)
     {
@@ -23,6 +32,11 @@ public class BulletScript : MonoBehaviour
             hit = true;
 
             Destroy(enemyStats.gameObject);
+
+            if(HealPlr)
+            {
+                PlayrMv.ProcessDamage(damage / 5);
+            }
         }
     }
 }

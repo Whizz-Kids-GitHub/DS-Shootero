@@ -66,11 +66,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void ProcessDamage(int damage)
     {
-        if(!invunerable && alive)
+        if(!invunerable && alive && damage > 0)
         {
             pHealth = pHealth - damage > 0 ? pHealth - damage : 0;
 
             TryToDie();
+        }
+        else if(alive && damage < 0 && pHealth < pMaxHealth)
+        {
+            pHealth -= damage;
+
+            if(pHealth > pMaxHealth)
+            {
+                pHealth = pMaxHealth;
+            }
         }
     }
 
@@ -78,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(pHealth <= 0)
         {
+            pHealth = 0;
+
             alive = false;
             Instantiate(FireEffect, this.transform);
             Invoke(nameof(Death), 2);
@@ -86,28 +97,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //if(Damage != 0 && !invunerable && alive)
-        //{
-        //    if(pHealth - Damage > 0)
-        //    {
-        //        pHealth -= Damage;
-        //        Damage = 0;
-        //    }
-        //    else
-        //    {
-        //        pHealth = 0;
-        //        Damage = 0;
-        //    }
-
-        //    if (pHealth <= 0)
-        //    {
-        //        alive = false;
-
-        //        Instantiate(FireEffect, this.transform);
-        //        Invoke("Death", 2);
-        //    }
-        //}
-        
         if (pLastHealth != pHealth)
         {
             pLastHealth = pHSlider.fillAmount * pMaxHealth;
