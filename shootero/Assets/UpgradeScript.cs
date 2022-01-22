@@ -32,35 +32,47 @@ public class UpgradeScript : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            randomNum = Random.Range(0, 100);
+            UgradeRaritySet(i, lvl);
+        }
+    }
 
-            if (randomNum <= Rarities[lvl].Rarity[0])
-            {
-                Upgrade(0, i);
-            }
-            else if (randomNum > Rarities[lvl].Rarity[0] && randomNum <= Rarities[lvl].Rarity[1])
-            {
-                Upgrade(2, i);
-            }
-            else if (randomNum > Rarities[lvl].Rarity[1] && randomNum <= Rarities[lvl].Rarity[2])
-            {
-                Upgrade(3, i);
-            }
-            else if (randomNum > Rarities[lvl].Rarity[2] && randomNum <= 100)
-            {
-                Upgrade(4, i);
-            }
+    void UgradeRaritySet(int i, int lvl)
+    {
+        randomNum = Random.Range(0, 100);
+
+        if (randomNum <= Rarities[lvl].Rarity[0])
+        {
+            Upgrade(0, i);
+        }
+        else if (randomNum > Rarities[lvl].Rarity[0] && randomNum <= Rarities[lvl].Rarity[1])
+        {
+            Upgrade(2, i);
+        }
+        else if (randomNum > Rarities[lvl].Rarity[1] && randomNum <= Rarities[lvl].Rarity[2])
+        {
+            Upgrade(3, i);
+        }
+        else if (randomNum > Rarities[lvl].Rarity[2] && randomNum <= 100)
+        {
+            Upgrade(4, i);
         }
     }
 
     void Upgrade(int rar, int i)
-    { 
-        int num = Random.Range(0 , Upgrades[rar].UpgradeStats.Length); 
-        
+    {
+        int num = Random.Range(0, Upgrades[rar].UpgradeStats.Length);
+
         UpgradeNum[i] = num;
         rarity[i] = rar;
 
-        buttons[num].GetComponent<Image>().sprite = Upgrades[rar].UpgradeStats[num].Icon;
+        if (avaliable[Upgrades[rar].UpgradeStats[num].avaliableNum])
+        {
+            buttons[num].GetComponent<Image>().sprite = Upgrades[rar].UpgradeStats[num].Icon;
+        }
+        else
+        {
+            UgradeRaritySet(i, level);
+        }
     }
 
     public void Apply(int button)
@@ -91,4 +103,6 @@ public class UpgradeStats
 
     public int number;
     public bool change;
+
+    public int avaliableNum;
 }
