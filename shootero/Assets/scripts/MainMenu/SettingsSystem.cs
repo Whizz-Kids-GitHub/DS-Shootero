@@ -6,6 +6,7 @@ public class SettingsSystem : MonoBehaviour
 {
     public List<Animator> animators;
     public Animator startButton;
+    public bool isClickable = true;
     StartGameSystem sgs;
     int animatorsLength;
 
@@ -16,11 +17,14 @@ public class SettingsSystem : MonoBehaviour
     }
     public void OpenSettingWindow()
     {
-        animatorsLength = animators.Count;
-        Debug.Log(animatorsLength);
-        startButton.SetBool("Start", true);
-        sgs.wasClicked = true;
-        StartCoroutine(OpenSettingsWindow2());
+        if(isClickable == true)
+        {
+            animatorsLength = animators.Count;
+            Debug.Log(animatorsLength);
+            startButton.SetBool("Start", true);
+            sgs.wasClicked = true;
+            StartCoroutine(OpenSettingsWindow2());
+        }
     }
     IEnumerator OpenSettingsWindow2()
     {

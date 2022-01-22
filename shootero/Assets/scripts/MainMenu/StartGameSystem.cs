@@ -7,6 +7,7 @@ public class StartGameSystem : MonoBehaviour
     GameObject mainCamera;
     int howManyAnimators;
     public bool wasClicked;
+    public bool isClickable = true;
     public float cameraShake;
     public Animator[] animators;
     public AudioSource[] sounds;
@@ -21,10 +22,11 @@ public class StartGameSystem : MonoBehaviour
     }
     public void StartGameButton()
     {
-        if(wasClicked == false)
+        if(wasClicked == false && isClickable == true)
         {
             StartCoroutine(StartGame());
             wasClicked = true;
+            isClickable = false;
         }
     }
     IEnumerator StartGame()
