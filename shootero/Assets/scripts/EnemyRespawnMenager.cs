@@ -19,9 +19,23 @@ public class EnemyRespawnMenager : MonoBehaviour
     private int randomNum;
     private LevelCounter levelCounter;
 
-    private void Start()
+    private static EnemyRespawnMenager instance;
+    public static EnemyRespawnMenager Instance { get => instance; }
+
+    private void Awake()
     {
-        levelCounter = GameObject.Find("LevelCounter").GetComponent<LevelCounter>();
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+        private void Start()
+    {
+        levelCounter = LevelCounter.Instance;
     }
 
     public void RespawnEnemies(float enemiesNum, int enemy)

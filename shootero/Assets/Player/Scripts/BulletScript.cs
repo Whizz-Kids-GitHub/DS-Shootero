@@ -21,7 +21,7 @@ public class BulletScript : MonoBehaviour
         PlayrMv = FindObjectOfType<PlayerMovement>();        
     }
 
-    private void OnTiggerEnter2D(Collider2D Enemy)
+    private void OnTriggerEnter2D(Collider2D Enemy)
     {
         if(Enemy.GetComponent<EnemyStatisctics>())
         {

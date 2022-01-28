@@ -6,6 +6,8 @@ public class Rotate : MonoBehaviour
 {
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 20 * Time.deltaTime));       
+        var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
 }

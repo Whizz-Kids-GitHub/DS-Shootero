@@ -24,10 +24,12 @@ public class StartGameSystem : MonoBehaviour
     {
         if(wasClicked == false && isClickable == true)
         {
+            StartCoroutine(StartGameCode());
             StartCoroutine(StartGame());
             wasClicked = true;
             isClickable = false;
         }
+        
     }
     IEnumerator StartGame()
     {
@@ -45,5 +47,12 @@ public class StartGameSystem : MonoBehaviour
     private void FixedUpdate()
     {
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position,new Vector3(Random.Range(-cameraShake, cameraShake), Random.Range(-cameraShake, cameraShake), -10), speed);
+    }
+
+    private IEnumerator StartGameCode()
+    {
+        LevelCounter.Instance.PrePrepareStart();
+        yield return new WaitForSeconds(4f);
+        GameObject.Find("StartGameAction").GetComponent<StartGameAction>().ChangeScene();
     }
 }

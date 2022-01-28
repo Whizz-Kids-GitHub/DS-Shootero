@@ -13,7 +13,6 @@ public class Chain : MonoBehaviour
     private void Start()
     {
         playerPlace = PlayerMovement.Instance.transform.position;
-
     }
 
     private void Update()
@@ -21,7 +20,7 @@ public class Chain : MonoBehaviour
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
         GetComponent<LineRenderer>().SetPosition(1, mummy.GetComponent<EnemyShootingBossBlue>().firePoint.transform.position);
 
-        if (Vector3.Distance(transform.position, playerPlace) <= 0.2f)
+        if (Vector3.Distance(transform.position, playerPlace) <= 0.4f)
         {
             Invoke("StepRet", 0.4f);
         }

@@ -13,37 +13,34 @@ public class EnemyShootingBossBlack : MonoBehaviour
     private void Start()
     {
         faze = 1;
-        StartCoroutine(Castportal());
+        StartCoroutine(CastPortal());
     }
-    private IEnumerator Castportal()
+    private IEnumerator CastPortal()
     {
-        yield return new WaitForSeconds(2f);
-
-        while (faze == 1)
+        while (true)
         {
             var curBullet = Instantiate(bulletToSummonPortal, firePoint.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            curBullet.transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 
-            
-            StartCoroutine(LerpPosition(new Vector3(transform.position.x + 4, transform.position.y, 0), 1));
-            yield return new WaitForSeconds(0.1f);
-            this.GetComponent<Animator>().SetTrigger("Roll");
-
+            curBullet.GetComponent<Rigidbody>().AddForce(curBullet.transform.up * -200);
             yield return new WaitForSeconds(1f);
 
-            var curSprite = this.GetComponent<SpriteRenderer>().sprite;
-            this.GetComponent<SpriteRenderer>().sprite = null;
-            
+            curBullet.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            this.GetComponent<Animator>().SetTrigger("Roll");
 
-            while (!curBullet.GetComponent<BulletToSummonPortal>().currentPortal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("PortalOtw"))
-            {
-                Debug.Log("nie");
-            }
-            transform.position = new Vector3(transform.position.x, transform.position.y - 5, 0);
-            this.GetComponent<SpriteRenderer>().sprite = curSprite;
-            StartCoroutine(LerpPosition(new Vector3(transform.position.x - 4, transform.position.y, 0), 1f));
+            LerpPosition(curBullet.transform.position, 0.5f);
+            yield return new WaitForSeconds(0.5f);
+            Destroy(curBullet);
 
-            yield return new WaitForSeconds(5f);
+            var min = GameObject.Find("EnemyMoveSpaceMin");
+            var max = GameObject.Find("EnemyMoveSpaceMax");
+
+            LerpPosition(new Vector3(Random.Range(min.transform.position.x, max.transform.position.x), 
+                Random.Range(min.transform.position.y, max.transform.position.y), 0), 1f);
+
+            yield return new WaitForSeconds(2f);
         }
     }
     IEnumerator LerpPosition(Vector3 targetPosition, float duration)
@@ -59,7 +56,7 @@ public class EnemyShootingBossBlack : MonoBehaviour
         }
         transform.position = targetPosition;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
     {
         var stats = this.GetComponent<EnemyStatisctics>();
 

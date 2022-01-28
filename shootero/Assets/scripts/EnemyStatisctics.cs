@@ -18,7 +18,7 @@ public class EnemyStatisctics : MonoBehaviour
 
     private void Start()
     {
-        levelCounter = GameObject.Find("LevelCounter");
+        levelCounter = LevelCounter.Instance.gameObject;
 
         damage += levelCounter.GetComponent<LevelCounter>().enemyStats;
 
@@ -56,14 +56,13 @@ public class EnemyStatisctics : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (levelCounter = GameObject.Find("LevelCounter"))
+
+        if (!this.GetComponent<MotherShipShip>())
         {
-            if (!this.GetComponent<MotherShipShip>())
-            {
-                levelCounter.GetComponent<LevelCounter>().deaths += 1;
-                levelCounter.GetComponent<LevelCounter>().StartSequence();
-                GameObject.Find("GoldCounter").GetComponent<GoldCounter>().CountGold();
-            }
+            levelCounter.GetComponent<LevelCounter>().deaths += 1;
+            levelCounter.GetComponent<LevelCounter>().StartSequence();
+            GameObject.Find("GoldCounter").GetComponent<GoldCounter>().CountGold();
         }
+
     }
 }

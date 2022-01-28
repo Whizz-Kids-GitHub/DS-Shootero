@@ -262,7 +262,7 @@ MonoBehaviour:
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
   exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
-  targetPosition: {x: 0, y: 0, z: 0}
+  canMove: 0
 --- !u!114 &931661603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  hp: 1
+  hp: 5
+  startHp: 0
+  isBoss: 0
 --- !u!95 &1036136840
 Animator:
   serializedVersion: 3
