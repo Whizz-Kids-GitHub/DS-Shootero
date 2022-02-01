@@ -4957,6 +4957,8 @@ MonoBehaviour:
   sparkles: {fileID: 1408393705}
   speed: 4
   damage: 2
+  warn: {r: 1, g: 0, b: 0, a: 0.5882353}
+  norm: {r: 0.6178845, g: 0.25490198, b: 1, a: 1}
 --- !u!120 &7080875946831072510
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5090,3 +5092,4 @@ MonoBehaviour:
   hp: 10
   startHp: 0
   isBoss: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}

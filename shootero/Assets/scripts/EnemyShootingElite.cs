@@ -32,7 +32,7 @@ public class EnemyShootingElite : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
 
             var rb = GetComponent<Rigidbody2D>();
-            rb.AddForce(transform.up * 200f);
+            rb.AddForce(transform.up * -200f);
 
             var anim = GetComponent<Animator>();
             anim.SetTrigger("Knockback");

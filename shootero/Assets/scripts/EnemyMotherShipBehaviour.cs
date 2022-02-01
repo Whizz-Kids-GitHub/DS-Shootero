@@ -14,7 +14,7 @@ public class EnemyMotherShipBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject donnaMama;
     [SerializeField]
-    private GameObject particleSystem;
+    //private GameObject particleSystem;
     private GameObject player;
     private void Start()
     {
@@ -37,6 +37,7 @@ public class EnemyMotherShipBehaviour : MonoBehaviour
            // particleSystem.GetComponent<ParticleSystem>().Play();
             GameObject curShip = Instantiate(ship, spawnPoint.transform.position, Quaternion.identity);
             curShip.GetComponent<MotherShipShip>().mum = donnaMama;
+            curShip.GetComponent<EnemyShootingBurst>().damage += this.GetComponent<EnemyStatisctics>().damage;
             dronesAmount += 1;
         }
 

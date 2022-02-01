@@ -14,13 +14,13 @@ public class EnemyShootingBossBlue : MonoBehaviour
     [SerializeField]
     private float timeBtwChainAtacks;
     public bool playerGrabbed;
-    private int maxNozzlesCount = 15;
+    public int maxNozzlesCount = 15;
 
     private void Start()
     {
         faze = 1;
         StartCoroutine(AtackChain(firePoint.transform.position));
-        //StartCoroutine(NozzlesSettings(maxNozzlesCount));
+        StartCoroutine(NozzlesSettings(maxNozzlesCount));
     }
 
     private IEnumerator AtackChain(Vector3 fireP)
@@ -75,7 +75,8 @@ public class EnemyShootingBossBlue : MonoBehaviour
     }
     float rotation(int i)
     {
-        return (float)(i * (450 / maxNozzlesCount));
+        Debug.Log(i);
+        return (float)(i * (467 / maxNozzlesCount));
     }
     private IEnumerator NozzlesShoot(GameObject[] nozzles, int curNumOfNozls, float rot)
     {
@@ -86,14 +87,14 @@ public class EnemyShootingBossBlue : MonoBehaviour
             {
                 var curFirePoint = nozzles[i].GetComponent<FirePointNozzle>().firePoint;
                 var curBul = Instantiate(bullet, curFirePoint.transform.position, new Quaternion(0, 0, 180 + rotation(i), 0));
-                curBul.GetComponent<Rigidbody>().AddForce(200 * curBul.transform.up);
+                curBul.GetComponent<Rigidbody>().AddForce(200 * nozzles[i].transform.up);
             }
         }
         for (int i = 0; i < curNumOfNozls; i++)
         {
             var curFirePoint = nozzles[i].GetComponent<FirePointNozzle>().firePoint;
             var curBul = Instantiate(bullet, curFirePoint.transform.position, new Quaternion(0, 0, 180 + rot, 0));
-            curBul.GetComponent<Rigidbody>().AddForce(200 * curBul.transform.up);
+            curBul.GetComponent<Rigidbody>().AddForce(200 * -nozzles[i].transform.up);
         }
     }
     public GameObject blastWave;
@@ -104,9 +105,9 @@ public class EnemyShootingBossBlue : MonoBehaviour
             blastWave.GetComponent<BlastWave>().BOOOM();
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject == PlayerMovement.Instance.gameObject)
+        if (other.gameObject.CompareTag("2D"))
         {
             StartCoroutine(SawBladeDamage());
         }

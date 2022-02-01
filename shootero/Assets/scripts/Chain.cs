@@ -44,9 +44,9 @@ public class Chain : MonoBehaviour
         }
     }
     bool grab;
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("2D"))
         {
             Return();
             grab = true;

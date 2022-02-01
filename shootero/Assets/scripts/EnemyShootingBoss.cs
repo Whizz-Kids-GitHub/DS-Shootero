@@ -62,21 +62,21 @@ public class EnemyShootingBoss : MonoBehaviour
 
         sawBlade.transform.Rotate(Vector3.forward * -180 * Time.deltaTime);
 
-        if (Input.GetKeyUp("o"))
-        {
-            StartCoroutine(Faze3_1());
-            faze = 3;
-        }
-        if (Input.GetKeyUp("p"))
-        {
-            StartCoroutine(Atack2());
-            faze = 2;
-        }
-        if (Input.GetKeyUp("["))
-        {
-            StartCoroutine(Faze4());
-            faze = 4;
-        }
+        //if (Input.GetKeyUp("o"))
+        //{
+        //    StartCoroutine(Faze3_1());
+        //    faze = 3;
+        //}
+        //if (Input.GetKeyUp("p"))
+        //{
+        //    StartCoroutine(Atack2());
+        //    faze = 2;
+        //}
+        //if (Input.GetKeyUp("["))
+        //{
+        //    StartCoroutine(Faze4());
+        //    faze = 4;
+        //}
     }
 
     private IEnumerator Atack1()
@@ -320,9 +320,9 @@ public class EnemyShootingBoss : MonoBehaviour
                 }
             }
         }
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("2D"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
+            PlayerMovement.Instance.ProcessDamage(20);
         }
     }
 }

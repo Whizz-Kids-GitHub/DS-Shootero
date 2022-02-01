@@ -31,6 +31,6 @@ public class LevelMenager : MonoBehaviour
     private IEnumerator UpdateSlider()
     {
         yield return new WaitForSeconds(1);
-        Slider.GetComponent<Slider>().value = (Level * 4)/100;
+        Slider.GetComponent<Slider>().value = (float)(Level * 4)/100;
     }
 }

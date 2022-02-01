@@ -131,6 +131,8 @@ MonoBehaviour:
   damage: 0
   hp: 45
   startHp: 0
+  isBoss: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &8880518502348618502
 MonoBehaviour:
   m_ObjectHideFlags: 0

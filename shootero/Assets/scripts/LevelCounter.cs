@@ -74,7 +74,7 @@ public class LevelCounter : MonoBehaviour
         }
         StartCoroutine(Respawn());
     }
-    private bool boss;
+    public bool boss;
     private void SpawnBoss(int bossNum)
     {
         boss = true;
@@ -89,7 +89,7 @@ public class LevelCounter : MonoBehaviour
             {
                 if (deaths == 1)
                 {
-                    StartCoroutine(ToMenu());
+                    BossToMenu();
                 }
             }
             else
@@ -102,7 +102,7 @@ public class LevelCounter : MonoBehaviour
                     deaths = 0;
                     if (subLevel >= 11)
                     {
-                        StartCoroutine(ToMenu());
+                        ToMenu();
                     }
                     StartCoroutine(Respawn());
                 }
@@ -116,25 +116,25 @@ public class LevelCounter : MonoBehaviour
             for (int i = 0; i < enemyCount; i++)
             {
                 respMenager = GameObject.Find("EnemyRespawnMenager").GetComponent<EnemyRespawnMenager>();
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.8f);
 
                 if (level < 6)
                 {
                     dificulty = 1;
 
-                    respMenager.RespawnEnemies(1, Random.Range(0, 2));//1
+                    respMenager.RespawnEnemies(1, Random.Range(0, 2));//max 1
                 }
                 else if (5 < level && level < 11)
                 {
                     dificulty = 2;
                     enemyStats = 5;
-                    respMenager.RespawnEnemies(1, Random.Range(0, 4));//3
+                    respMenager.RespawnEnemies(1, Random.Range(0, 4));//max 3
                 }
                 else if (10 < level && level < 16)
                 {
                     dificulty = 3;
                     enemyStats = 20;
-                    respMenager.RespawnEnemies(1, Random.Range(0, 6));//5
+                    respMenager.RespawnEnemies(1, Random.Range(0, 7));//max 6 ale potem trzeba zmienic na 6 bo ten ostatni to mothership dla testow
                 }
                 //else if (15 < level && level < 20)
                 //{
@@ -169,35 +169,32 @@ public class LevelCounter : MonoBehaviour
                 bossNum = 3;
                 SpawnBoss(bossNum);
             }
-
-            if (deaths >= enemyCount)
-            {
-                ToMenu();
-            }
         }
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            StartCoroutine(ToMenu());
+            ToMenu();
         }
     }
-    IEnumerator ToMenu()
+    public void ToMenu()
     {
         if (subLevel >= 11)
         {
             level += 1;
             subLevel = 1;
         }
-        if (subLevel == 1 && boss)
-        {
-            level++;
-        }
 
         SceneManager.LoadScene("MainMenu Test", LoadSceneMode.Single);
 
-        yield return new WaitForEndOfFrame();
+        LevelMenager.Instance.Level = level;
+    }
+    public void BossToMenu()
+    {
+        level += 1;
+        subLevel = 1;
+        SceneManager.LoadScene("MainMenu Test", LoadSceneMode.Single);
 
         LevelMenager.Instance.Level = level;
     }

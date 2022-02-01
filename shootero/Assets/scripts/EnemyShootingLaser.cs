@@ -13,9 +13,6 @@ public class EnemyShootingLaser : MonoBehaviour
 
     private float time;
 
-    [SerializeField]
-    private float speed = 0;
-
     public int damage;
     private bool canRot;
     private bool canDmg;
@@ -23,6 +20,9 @@ public class EnemyShootingLaser : MonoBehaviour
     {
         rend.SetPosition(0, firePoint.transform.position);
         rend.SetPosition(1, firePoint.transform.position);
+
+        rend.endWidth = 0.02f;
+        rend.startWidth = 0.02f;
     }
     private void Start()
     {
@@ -37,6 +37,11 @@ public class EnemyShootingLaser : MonoBehaviour
             var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+            this.GetComponent<EnemyMovement>().canMove = true;
+        }
+        else
+        {
+            this.GetComponent<EnemyMovement>().canMove = false;
         }
 
         if (canRot == false && canDmg)
@@ -54,17 +59,27 @@ public class EnemyShootingLaser : MonoBehaviour
             canDmg = false;
         }
     }
-
+    [SerializeField] private Color warn;
+    [SerializeField] private Color norm;
     private IEnumerator Shoot(float duration)
     {
-        yield return new WaitForSeconds(2.3f);
-        canDmg = true;
+        yield return new WaitForSeconds(1.3f);
+        rend.startColor = warn;
+        rend.endColor = warn;
+
         time = 0;
         canRot = false;
-        sparkles.gameObject.SetActive(true);
 
         rend.SetPosition(0, firePoint.transform.position);
         rend.SetPosition(1, firePoint.transform.up * -15f);
+        yield return new WaitForSeconds(1f);
+        canDmg = true;
+        sparkles.gameObject.SetActive(true);
+        
+        rend.startColor = norm;
+        rend.endColor = norm;
+        //rend.SetPosition(0, firePoint.transform.position);
+        //rend.SetPosition(1, firePoint.transform.up * -15f);
         StartCoroutine(SizeUp());
 
         this.GetComponent<EnemyMovement>().canMove = false;

@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 3647216445858244517}
   - component: {fileID: 3647216445887505359}
   - component: {fileID: -671742616307784467}
+  - component: {fileID: 171802833}
+  - component: {fileID: 171802834}
   m_Layer: 0
   m_Name: BossBlack
   m_TagString: Untagged
@@ -130,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletToSummonPortal: {fileID: 1741190772115829732, guid: 5ad5f12b75d948046b528b8aca6059a0, type: 3}
   firePoint: {fileID: 3647216445498203972}
+  bullet: {fileID: 1998800132352423210, guid: d967faf0adec0f74f93e9cf29606d88c, type: 3}
+  recoilRange: 10
 --- !u!95 &3647216445887505359
 Animator:
   serializedVersion: 3
@@ -165,3 +169,58 @@ MonoBehaviour:
   hp: 500
   startHp: 0
   isBoss: 1
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!60 &171802833
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647216445858244521}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.15605575, y: 0.4281273}
+      - {x: -0.4505875, y: 0.012504578}
+      - {x: -0.43711138, y: 0.0148358345}
+      - {x: -0.19942188, y: -0.44160342}
+      - {x: 0.17754453, y: -0.44609547}
+      - {x: 0.44160348, y: -0.025592327}
+      - {x: 0.19004926, y: 0.38124037}
+      - {x: 0.043366194, y: 0.45058727}
+--- !u!50 &171802834
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647216445858244521}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

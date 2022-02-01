@@ -39,7 +39,7 @@ public class HomingMissile : MonoBehaviour
 		var player = GameObject.FindGameObjectWithTag("Player");
 		if (Vector3.Distance(transform.position, player.transform.position) <= 0.5f)
         {
-			PlayerMovement.Instance.ProcessDamage(2);
+			PlayerMovement.Instance.ProcessDamage(5);
 			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy(gameObject);
         }

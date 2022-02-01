@@ -25,7 +25,7 @@ public class EnemyShootingPewPew : MonoBehaviour
     private void Start()
     {
         time2 = startTime;
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = PlayerMovement.Instance.gameObject.GetComponent<Transform>();
         movement = GetComponent<EnemyMovement>();
         StartCoroutine(Atack());
     }
@@ -66,9 +66,7 @@ public class EnemyShootingPewPew : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log("hit");
                     PlayerMovement.Instance.ProcessDamage(10);
-                    //var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Damage += 10;
                 }
             }
             #endregion 

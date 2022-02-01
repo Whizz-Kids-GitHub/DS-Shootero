@@ -40,16 +40,16 @@ public class EnemyShootingBossGreen : MonoBehaviour
     {
         while (faze == 1)
         {
-            Instantiate(drone1, dronesPoint.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(3f);
+            var curEnemy = Instantiate(drone1, dronesPoint.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(2.5f);
         }
     }
     private IEnumerator Faze1()
     {
+        StartCoroutine(SpawnDrones());
         while (faze == 1)
         {
-            StartCoroutine(SpawnDrones());
-
+           
             sparkles.GetComponent<ParticleSystem>().Play();
 
             yield return new WaitForSeconds(2);
@@ -124,20 +124,36 @@ public class EnemyShootingBossGreen : MonoBehaviour
         Physics.Raycast(transform.position, transform.position + (-transform.up * 15f), out hit, Mathf.Infinity);
         if (hit.collider != null)
         {
-
             if (hit.collider.CompareTag("Player"))
             {
-                rend.SetPosition(1, hit.point);
+                bool loop = true;
+                
                 for (int i = 0; i < 9; i++)
                 {
+                    if (loop)
+                    {
+                        Stun(0.72f);
+                        loop = false;
+                    }
                     var curParticles = Instantiate(particles, hit.point, Quaternion.identity);
 
                     curParticles.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                     PlayerMovement.Instance.ProcessDamage(10);
                     yield return new WaitForSeconds(0.08f);
                 }
-
+                loop = true;
             }
+        }
+    }
+
+    private void Stun(float duration)
+    {
+        Vector3 PlayPos = PlayerMovement.Instance.gameObject.transform.position;
+        float time = 0;
+        while (time <= duration)
+        {
+            PlayerMovement.Instance.gameObject.transform.position = PlayPos;
+            time += Time.deltaTime;
         }
     }
     private IEnumerator Particles(Vector3 particlesPosition)
