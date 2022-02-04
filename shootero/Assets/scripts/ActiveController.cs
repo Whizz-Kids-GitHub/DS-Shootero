@@ -18,16 +18,25 @@ public class ActiveController : MonoBehaviour
 
     public int Num;
 
+    public int maxAmount;
+    public int maxAmountNow;
+
     void SetButtonText(int num)
     {
-        ButtonsInfo[num].priceButton.text = (ButtonsInfo[num].price.ToString());
-        ButtonsInfo[num].amountButton.text = (ButtonsInfo[num].price.ToString());
+        if(num >= 0)
+        {
+            ButtonsInfo[num].priceButton.text = (ButtonsInfo[num].price.ToString());
+            ButtonsInfo[num].amountButton.text = (ButtonsInfo[num].amount.ToString());
+        }
     }
 
-    void Buy(int num)
+    public void Buy(int num)
     {
-        if (ButtonsInfo[num].times < TarkovPrices[num].amount.Length - 1)
+
+        if (ButtonsInfo[num].times <= maxAmount && ButtonsInfo[num].times <= maxAmountNow && (Num == num || (Num == 2 && num == 5)))
         {
+            Debug.Log(num);
+
             Coins -= ButtonsInfo[num].price;
             ButtonsInfo[num].total += ButtonsInfo[num].amount;
 
@@ -35,6 +44,13 @@ public class ActiveController : MonoBehaviour
 
             ButtonsInfo[num].price = TarkovPrices[num].price[ButtonsInfo[num].times];
             ButtonsInfo[num].amount = TarkovPrices[num].amount[ButtonsInfo[num].times];
+
+            SetButtonText(num);
+
+            if(num == 2)
+            {
+                SetButtonText(5);
+            }
         }
     }
     
@@ -74,6 +90,13 @@ public class ActiveController : MonoBehaviour
                 NumActive[Num].inActive[i].SetActive(false);
             }
         }
+
+        SetButtonText(Num);
+
+        if (Num == 2)
+        {
+            SetButtonText(5);
+        }
     }
 
     public void ButtonPushDown()
@@ -111,6 +134,13 @@ public class ActiveController : MonoBehaviour
             {
                 NumActive[Num].inActive[i].SetActive(false);
             }
+        }
+
+        SetButtonText(Num);
+
+        if (Num == 2)
+        {
+            SetButtonText(5);
         }
     }
 }

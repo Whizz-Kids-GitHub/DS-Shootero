@@ -65,6 +65,8 @@ public class UpgradeScript : MonoBehaviour
         UpgradeNum[i] = num;
         rarity[i] = rar;
 
+        Time.timeScale = 0;
+
         if (avaliable[Upgrades[rar].UpgradeStats[num].avaliableNum])
         {
             buttons[num].GetComponent<Image>().sprite = Upgrades[rar].UpgradeStats[num].Icon;
@@ -78,6 +80,7 @@ public class UpgradeScript : MonoBehaviour
     public void Apply(int button)
     {
         Instantiate(Upgrades[rarity[button]].UpgradeStats[UpgradeNum[button]].Icon, this.transform);
+        Time.timeScale = 1;
     }
 }
 
