@@ -1,87 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &969561792
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 969561793}
-  - component: {fileID: 969561794}
-  m_Layer: 0
-  m_Name: Glass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &969561793
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969561792}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -17280}
-  m_LocalScale: {x: 192, y: 192, z: 192}
-  m_Children: []
-  m_Father: {fileID: 5441523716422130182}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &969561794
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969561792}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1709617531
-  m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1fc1b2262a4a0724da6fb89c6e4dd10d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.08, y: 1.92}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &638002044376936242
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +32,7 @@ RectTransform:
   - {fileID: 843632644510733714}
   - {fileID: 2690005481513450278}
   m_Father: {fileID: 5441523716422130182}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -191,7 +109,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 7143526581404861796}
-  - {fileID: 969561793}
   - {fileID: 3867288323782526043}
   - {fileID: 7737057034122337460}
   - {fileID: 5441523716757838121}
@@ -542,7 +459,7 @@ RectTransform:
   m_LocalScale: {x: 3.6116, y: 3.6116, z: 3.6116}
   m_Children: []
   m_Father: {fileID: 5441523716422130182}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -788,9 +705,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5441523716422130182}
     m_Modifications:
+    - target: {fileID: 3495171869778390971, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
+      propertyPath: avaliable.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495171869778390971, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
+      propertyPath: avaliable.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495171869778390971, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
+      propertyPath: Upgrades.Array.data[0].UpgradeStats.Array.data[0].Icon
+      value: 
+      objectReference: {fileID: -943990904357719708, guid: 5a61371a9f10f46439c79dc0f05e33b7, type: 3}
     - target: {fileID: 3495171870930142522, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
       propertyPath: m_Name
       value: UpgradeMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495171870930142522, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3495171870930142523, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
       propertyPath: m_Pivot.x
@@ -802,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3495171870930142523, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3495171870930142523, guid: 35f6cd00b68d60f4ca0da64567aac529, type: 3}
       propertyPath: m_AnchorMax.x
