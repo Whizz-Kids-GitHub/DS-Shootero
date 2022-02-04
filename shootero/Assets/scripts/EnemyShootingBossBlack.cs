@@ -43,11 +43,27 @@ public class EnemyShootingBossBlack : MonoBehaviour
 
                 this.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             }
+            var dir3 = PlayerMovement.Instance.gameObject.transform.position - transform.position;
+            var angle3 = Mathf.Atan2(dir3.y, dir3.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle3 + 90, Vector3.forward);
 
+            //LerpFunction(rot, 0.3f);
             StartCoroutine(Shoot());
            
             yield return new WaitForSeconds(2f);
         }
+    }
+    IEnumerator LerpFunction(Quaternion endValue, float duration)
+    {
+        float time = 0;
+        Quaternion startValue = transform.rotation;
+        while (time < duration)
+        {
+            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = endValue;
     }
     [SerializeField]
     private GameObject bullet;

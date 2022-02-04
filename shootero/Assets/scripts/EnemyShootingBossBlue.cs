@@ -35,7 +35,7 @@ public class EnemyShootingBossBlue : MonoBehaviour
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             curChain.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-            curChain.GetComponent<Rigidbody>().AddForce(curChain.transform.up * 350);
+            curChain.GetComponent<Rigidbody2D>().AddForce(curChain.transform.up * 350);
             curChain.GetComponent<Chain>().mummy = this.gameObject;
         }
     }
@@ -75,7 +75,6 @@ public class EnemyShootingBossBlue : MonoBehaviour
     }
     float rotation(int i)
     {
-        Debug.Log(i);
         return (float)(i * (467 / maxNozzlesCount));
     }
     private IEnumerator NozzlesShoot(GameObject[] nozzles, int curNumOfNozls, float rot)
@@ -88,6 +87,7 @@ public class EnemyShootingBossBlue : MonoBehaviour
                 var curFirePoint = nozzles[i].GetComponent<FirePointNozzle>().firePoint;
                 var curBul = Instantiate(bullet, curFirePoint.transform.position, new Quaternion(0, 0, 180 + rotation(i), 0));
                 curBul.GetComponent<Rigidbody>().AddForce(200 * nozzles[i].transform.up);
+                curBul.GetComponent<BulletBurst>().damage = 5;
             }
         }
         for (int i = 0; i < curNumOfNozls; i++)
@@ -95,6 +95,7 @@ public class EnemyShootingBossBlue : MonoBehaviour
             var curFirePoint = nozzles[i].GetComponent<FirePointNozzle>().firePoint;
             var curBul = Instantiate(bullet, curFirePoint.transform.position, new Quaternion(0, 0, 180 + rot, 0));
             curBul.GetComponent<Rigidbody>().AddForce(200 * -nozzles[i].transform.up);
+            curBul.GetComponent<BulletBurst>().damage = 5;
         }
     }
     public GameObject blastWave;

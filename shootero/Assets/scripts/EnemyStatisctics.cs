@@ -76,7 +76,7 @@ public class EnemyStatisctics : MonoBehaviour
                 levelCounter.GetComponent<LevelCounter>().deaths += 1;
             }
             levelCounter.GetComponent<LevelCounter>().StartSequence();
-            GameObject.Find("GoldCounter").GetComponent<GoldCounter>().CountGold();
+            //GameObject.Find("GoldCounter").GetComponent<GoldCounter>().CountGold();
         }
 
     }

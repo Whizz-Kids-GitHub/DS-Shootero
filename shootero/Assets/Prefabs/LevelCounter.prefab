@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31343372af180db40b8c2255c2da8610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
+  level: 1
   subLevel: 0
   enemyCount: 0
   deaths: 0
@@ -88,3 +88,4 @@ MonoBehaviour:
   - {fileID: 2001675251425945746, guid: 2c2a858415458524784933f992c1f81c, type: 3}
   - {fileID: 6863582506023798805, guid: 3b0ae26b9a3cd3d419b11a6611ecd6a4, type: 3}
   - {fileID: 2892099648866553005, guid: 20c3f967f04695c4d889e153c830bc2b, type: 3}
+  boss: 0

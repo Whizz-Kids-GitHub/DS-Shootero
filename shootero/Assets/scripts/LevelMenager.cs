@@ -23,14 +23,8 @@ public class LevelMenager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    private void Start()
+    public void UpdateSlider()
     {
-        StartCoroutine(UpdateSlider());
-    }
-    private IEnumerator UpdateSlider()
-    {
-        yield return new WaitForSeconds(1);
         Slider.GetComponent<Slider>().value = (float)(Level * 4)/100;
     }
 }

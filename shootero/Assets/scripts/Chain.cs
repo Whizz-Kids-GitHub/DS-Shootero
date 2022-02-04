@@ -38,7 +38,7 @@ public class Chain : MonoBehaviour
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
-            this.GetComponent<Rigidbody>().AddForce(transform.up * 700f);
+            this.GetComponent<Rigidbody2D>().AddForce(transform.up * 700f);
             canStop = true;
             returned = true;
         }
@@ -56,7 +56,7 @@ public class Chain : MonoBehaviour
         if (collision.gameObject == mummy.gameObject && canStop)
         {
             
-            this.GetComponent<Rigidbody>().velocity = Vector2.zero;
+            this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             if (!grab)
             {
                 mummy.GetComponent<EnemyShootingBossBlue>().playerGrabbed = false;
