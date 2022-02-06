@@ -5,11 +5,9 @@ using UnityEngine;
 public class StartGameSystem : MonoBehaviour
 {
     GameObject mainCamera;
-    int howManyAnimators;
     public bool wasClicked;
     public bool isClickable = true;
     public float cameraShake;
-    public Animator[] animators;
     public AudioSource[] sounds;
     public Animator black;
     public float speed;
@@ -17,7 +15,6 @@ public class StartGameSystem : MonoBehaviour
     private void Start()
     {
         mainCamera = GameObject.Find("Main Camera");
-        howManyAnimators = animators.Length - 1;
 
     }
     public void StartGameButton()
@@ -26,16 +23,10 @@ public class StartGameSystem : MonoBehaviour
         {
             StartCoroutine(StartGame());
             wasClicked = true;
-            isClickable = false;
         }
     }
     IEnumerator StartGame()
     {
-        while (howManyAnimators >= 0)
-        {
-            animators[howManyAnimators].SetBool("Start", true);
-            howManyAnimators--;
-        }
         sounds[0].Play();
         yield return new WaitForSeconds(2);
         sounds[1].Play();
