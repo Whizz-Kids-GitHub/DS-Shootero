@@ -637,3 +637,4 @@ MonoBehaviour:
   hp: 5
   startHp: 0
   isBoss: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}

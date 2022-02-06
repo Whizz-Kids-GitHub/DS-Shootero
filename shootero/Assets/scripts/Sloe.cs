@@ -38,6 +38,7 @@ public class Sloe : MonoBehaviour
     {
         time = 0;
         Vector3 startSize = Vector3.zero;
+        PlayerMovement.Instance.speedModifier = 1f;
         while (time < duration2)
         {
             transform.localScale = Vector3.Lerp(new Vector3(2, 2, 0), startSize, time / duration2);
@@ -47,5 +48,11 @@ public class Sloe : MonoBehaviour
         transform.localScale = new Vector3(0, 0, 0);
         Destroy(gameObject);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<PlayerMovement>())
+        {
+            PlayerMovement.Instance.speedModifier = 0.5f;
+        }
+    }
 }

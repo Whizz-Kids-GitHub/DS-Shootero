@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1408393708
 Transform:
   m_ObjectHideFlags: 0
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minXnY: {fileID: 0}
   maxXnY: {fileID: 0}
-  exploParticles: {fileID: 0}
+  exploParticles: {fileID: 328921973032942160, guid: 76eac9ab94961494690c82d7ffb8721f, type: 3}
   canMove: 0
 --- !u!114 &7080875946831072480
 MonoBehaviour:
@@ -4954,11 +4954,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rend: {fileID: 7080875946831072510}
   firePoint: {fileID: 7080875946367758418}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  sparkles: {fileID: 1408393705}
   speed: 4
-  damage: 0
+  damage: 2
+  warn: {r: 1, g: 0, b: 0, a: 0.5882353}
+  norm: {r: 0.6178845, g: 0.25490198, b: 1, a: 1}
 --- !u!120 &7080875946831072510
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5000,8 +5000,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 4.51, y: -1.16, z: 0}
-  - {x: 4.51, y: -4.09, z: 1}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -2.49, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -5010,7 +5010,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0.015899658
-        value: 0.047166824
+        value: 0.05378914
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5088,5 +5088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b19973c7a63a44a84cc5f6fd4bb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  hp: 0
+  damage: 1
+  hp: 10
+  startHp: 0
+  isBoss: 0
+  hitColor: {r: 1, g: 0, b: 0, a: 1}

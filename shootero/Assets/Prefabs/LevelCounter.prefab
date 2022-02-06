@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &470868205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 470868206}
+  m_Layer: 0
+  m_Name: BossSpawnPlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &470868206
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470868205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.36, y: 4.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5443069675920361954}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5443069675920361953
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,7 +57,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3867399, y: 0.35811844, z: -214.01419}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 470868206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44,8 +75,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  subLevel: 0
   enemyCount: 0
   deaths: 0
   dificultyScallingSpeed: 1.5
   dificulty: 0
   enemyStats: 0
+  bossSpawnPlace: {fileID: 470868205}
+  bosses:
+  - {fileID: 3647216445858244521, guid: e3662eb587d76b54bae7009791d1c6ac, type: 3}
+  - {fileID: 1265187346459492235, guid: 043c93d61dddd514192e75e007b08224, type: 3}
+  - {fileID: 2001675251425945746, guid: 2c2a858415458524784933f992c1f81c, type: 3}
+  - {fileID: 6863582506023798805, guid: 3b0ae26b9a3cd3d419b11a6611ecd6a4, type: 3}
+  - {fileID: 2892099648866553005, guid: 20c3f967f04695c4d889e153c830bc2b, type: 3}
+  boss: 0

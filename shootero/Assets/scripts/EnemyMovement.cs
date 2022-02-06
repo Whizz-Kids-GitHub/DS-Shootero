@@ -27,8 +27,8 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(Move());
         do
         {
-            maxXnY = GameObject.Find("maxXnY");
-            minXnY = GameObject.Find("minXnY");
+            maxXnY = GameObject.Find("EnemyMoveSpaceMax");
+            minXnY = GameObject.Find("EnemyMoveSpaceMin");
 
             targetSpot.transform.position = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
                 Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
@@ -59,5 +59,10 @@ public class EnemyMovement : MonoBehaviour
             Instantiate(exploParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(targetSpot);
     }
 }

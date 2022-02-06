@@ -9,9 +9,9 @@ public class TarkovController : MonoBehaviour
 
     public int hp;
     public int mvSpd;
-    public int bulSpd;
     public int atkSpd;
     public int dmg;
+    public int coinsEarn;
     [Space(15)]
 
     public int[] price;
@@ -45,22 +45,9 @@ public class TarkovController : MonoBehaviour
         }
     }
 
-    public void buyBulSpd(int num)
-    {
-        if (Coins >= price[3])
-        {
-            bulSpd += num;
-            canBuy = true;
-        }
-        else
-        {
-            canBuy = false;
-        }
-    }
-
     public void buyAtkSpd(int num)
     {
-        if (Coins >= price[4])
+        if (Coins >= price[3])
         {
             atkSpd += num;
             canBuy = true;
@@ -73,9 +60,22 @@ public class TarkovController : MonoBehaviour
 
     public void buyDmg(int num)
     {
-        if (Coins >= price[5])
+        if (Coins >= price[4])
         {
             dmg += num;
+            canBuy = true;
+        }
+        else
+        {
+            canBuy = false;
+        }
+    }
+
+    public void buyEarning(int num)
+    {
+        if (Coins >= price[5])
+        {
+            coinsEarn += num;
             canBuy = true;
         }
         else

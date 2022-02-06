@@ -19,9 +19,23 @@ public class EnemyRespawnMenager : MonoBehaviour
     private int randomNum;
     private LevelCounter levelCounter;
 
+    private static EnemyRespawnMenager instance;
+    public static EnemyRespawnMenager Instance { get => instance; }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void Start()
     {
-        levelCounter = GameObject.Find("LevelCounter").GetComponent<LevelCounter>();
+        levelCounter = LevelCounter.Instance;
     }
 
     public void RespawnEnemies(float enemiesNum, int enemy)
@@ -39,8 +53,8 @@ public class EnemyRespawnMenager : MonoBehaviour
         {
             #region areaChoose
 
-            Vector3 respArea1 = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
-                Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
+            //Vector3 respArea1 = new Vector3(Random.Range(minXnY.transform.position.x, maxXnY.transform.position.x),
+                //Random.Range(minXnY.transform.position.y, maxXnY.transform.position.y), 0);
 
             Vector3 respArea2 = new Vector3(Random.Range(minXnY2.transform.position.x, maxXnY2.transform.position.x),
                 Random.Range(minXnY2.transform.position.y, maxXnY2.transform.position.y), 0);
@@ -48,14 +62,13 @@ public class EnemyRespawnMenager : MonoBehaviour
             Vector3 respArea3 = new Vector3(Random.Range(minXnY3.transform.position.x, maxXnY3.transform.position.x),
                 Random.Range(minXnY3.transform.position.y, maxXnY3.transform.position.y), 0);
 
-            randomNum = Random.Range(1, 4);
+            randomNum = Random.Range(2, 4);
 
             switch (randomNum)
             {
-                case 1:
-                    rngArea = respArea1;
-
-                    break;
+                //case 1:
+                 //   rngArea = respArea1;
+                    //break;
                 case 2:
                     rngArea = respArea2;
                     break;
@@ -65,7 +78,7 @@ public class EnemyRespawnMenager : MonoBehaviour
             }
             #endregion
 
-            GameObject curEnemy = Instantiate(allEnemies[enemy], new Vector3(rngArea.x, rngArea.y, 10), new Quaternion(0,0,0,0));
+            GameObject curEnemy = Instantiate(allEnemies[enemy], new Vector3(rngArea.x, rngArea.y, 10), new Quaternion(0, 0, 0, 0));
 
             curEnemy.GetComponent<EnemyStatisctics>().hp += levelCounter.enemyStats;
             curEnemy.GetComponent<EnemyStatisctics>().damage += levelCounter.enemyStats;

@@ -13,7 +13,7 @@ public class EnemyShootingBurst : MonoBehaviour
     public GameObject firePoint;
     public AudioSource sound;
 
-    public int damage = 1;
+    public int damage;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

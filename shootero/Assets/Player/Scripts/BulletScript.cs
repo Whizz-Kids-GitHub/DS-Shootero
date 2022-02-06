@@ -21,8 +21,12 @@ public class BulletScript : MonoBehaviour
         PlayrMv = FindObjectOfType<PlayerMovement>();        
     }
 
-    private void OnTiggerEnter2D(Collider2D Enemy)
+    private void OnTriggerEnter2D(Collider2D Enemy)
     {
+        if (Enemy.gameObject.CompareTag("Shield"))
+        {
+            Destroy(gameObject);
+        }
         if(Enemy.GetComponent<EnemyStatisctics>())
         {
             enemyStats = Enemy.GetComponent<EnemyStatisctics>();
@@ -31,12 +35,11 @@ public class BulletScript : MonoBehaviour
 
             hit = true;
 
-            Destroy(enemyStats.gameObject);
-
             if(HealPlr)
             {
                 PlayrMv.ProcessDamage(damage / 5);
             }
+            Destroy(gameObject);
         }
     }
 }

@@ -9,7 +9,7 @@ public class TarkovData : MonoBehaviour
 
     public int hp;
     public int mvSpd;
-    public int bulSpd;
+    public int Earnings;
     public int atkSpd;
     public int dmg;
 
@@ -18,7 +18,7 @@ public class TarkovData : MonoBehaviour
         Coins = obj.Coins;
         hp = obj.hp;
         mvSpd = obj.mvSpd;
-        bulSpd = obj.bulSpd;
+        Earnings = obj.coinsEarn;
         atkSpd = obj.atkSpd;
         dmg = obj.dmg;
     }

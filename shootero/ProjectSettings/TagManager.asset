@@ -9,6 +9,8 @@ TagManager:
   - tempSloeObject
   - Shield
   - Boss
+  - 2D
+  - RaycastCollider
   layers:
   - Default
   - TransparentFX
