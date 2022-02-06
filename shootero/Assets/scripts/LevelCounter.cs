@@ -26,7 +26,7 @@ public class LevelCounter : MonoBehaviour
     /*
      Kolejnosc bossow:
     private GameObject bossBlack;
-    private GameObject bossBlue;
+    private GameObject bossYellow(blue);
     private GameObject bossGreen;
     private GameObject bossRed;
     private GameObject finalBoss;
@@ -97,6 +97,8 @@ public class LevelCounter : MonoBehaviour
                 if (deaths >= enemyCount)
                 {
                     subLevel += 1;
+
+                    GameObject.Find("UpgradeMenu").GetComponentInChildren<UpgradeScript>().UpgradeRarity(subLevel);
 
                     enemyCount = dificultyScallingSpeed * (Mathf.Pow(subLevel, 1.5f));
                     deaths = 0;
@@ -187,6 +189,10 @@ public class LevelCounter : MonoBehaviour
         {
             StartCoroutine(ToMenu());
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            StartSequence();
+        }
     }
     public IEnumerator ToMenu()
     {
@@ -200,8 +206,8 @@ public class LevelCounter : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-       // LevelMenager.Instance.Level = level;
-       //LevelMenager.Instance.UpdateSlider();
+       LevelMenager.Instance.Level = level;
+       LevelMenager.Instance.UpdateSlider();
     }
     public IEnumerator BossToMenu()
     {

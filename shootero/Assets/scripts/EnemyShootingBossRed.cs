@@ -20,11 +20,16 @@ public class EnemyShootingBossRed : MonoBehaviour
         faze = 1;
         StartCoroutine(ShootFirePoints());
     }
+    private void Update()
+    {
+        var dir = PlayerMovement.Instance.gameObject.transform.position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+    }
     private IEnumerator ShootFirePoints()
     {
         while (faze == 1)
         {
-            StartCoroutine(LerpFunction(new Quaternion(0, 0, transform.rotation.z + 360, 0), 2.9f));
             for (int a = 0; a < burstLength; a++)
             {
                 for (int i = 0; i < firePoints.Length; i++)
@@ -66,19 +71,6 @@ public class EnemyShootingBossRed : MonoBehaviour
         var bigBoi = Instantiate(particles, transform.position, Quaternion.identity);
         bigBoi.transform.localScale = new Vector3(2, 2, 0);
         Destroy(gameObject);
-    }
-    IEnumerator LerpFunction(Quaternion endValue, float duration)
-    {
-        float time = 0;
-        Quaternion startValue = transform.rotation;
-
-        while (time < duration)
-        {
-            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.rotation = endValue;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

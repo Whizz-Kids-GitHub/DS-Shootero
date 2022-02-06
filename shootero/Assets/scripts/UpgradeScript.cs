@@ -65,7 +65,7 @@ public class UpgradeScript : MonoBehaviour
         UpgradeNum[i] = num;
         rarity[i] = rar;
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
 
         if (avaliable[Upgrades[rar].UpgradeStats[num].avaliableNum])
         {

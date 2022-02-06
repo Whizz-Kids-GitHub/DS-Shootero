@@ -13,14 +13,16 @@ public class HomingMissile : MonoBehaviour
 	private Rigidbody2D rb;
 	[SerializeField]
 	private GameObject particles;
-
-	// Use this for initialization
 	void Start()
 	{
 		target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 		rb = GetComponent<Rigidbody2D>();
+		Invoke("Destro", 3);
 	}
-
+	private void Destro()
+    {
+		Destroy(gameObject);
+    }
 	void FixedUpdate()
 	{
 		Vector2 direction = (Vector2)target.position - rb.position;
@@ -39,7 +41,7 @@ public class HomingMissile : MonoBehaviour
 		var player = GameObject.FindGameObjectWithTag("Player");
 		if (Vector3.Distance(transform.position, player.transform.position) <= 0.5f)
         {
-			PlayerMovement.Instance.ProcessDamage(5);
+			PlayerMovement.Instance.ProcessDamage(15);
 			Instantiate(particles, transform.position, Quaternion.identity);
 			Destroy(gameObject);
         }
