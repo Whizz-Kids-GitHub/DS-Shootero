@@ -15,7 +15,6 @@ public class Sloe : MonoBehaviour
         transform.localScale = Vector3.zero;
         StartCoroutine(SizeUp());
     }
-
     IEnumerator SizeUp()
     {
         time = 0;
@@ -46,14 +45,15 @@ public class Sloe : MonoBehaviour
             yield return null;
         }
         transform.localScale = new Vector3(0, 0, 0);
-        playerMovementToMouse.Instance.canMove = true;
+        playerMovementToMouse.Instance.mvOffset = playerMovementToMouse.Instance.BaseMvOffset;
+
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerMovement>())
         {
-            playerMovementToMouse.Instance.canMove = false;
+            playerMovementToMouse.Instance.mvOffset = playerMovementToMouse.Instance.BaseMvOffset / 20f;
         }
     }
 }

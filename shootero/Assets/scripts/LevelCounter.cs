@@ -98,8 +98,6 @@ public class LevelCounter : MonoBehaviour
                 {
                     subLevel += 1;
 
-                    GameObject.Find("UpgradeMenu").GetComponentInChildren<UpgradeScript>().UpgradeRarity(subLevel);
-
                     enemyCount = dificultyScallingSpeed * (Mathf.Pow(subLevel, 1.5f));
                     deaths = 0;
                     if (subLevel >= 11)
@@ -206,8 +204,8 @@ public class LevelCounter : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-       LevelMenager.Instance.Level = level;
-       LevelMenager.Instance.UpdateSlider();
+        LevelMenager.Instance.Level = level;
+        LevelMenager.Instance.UpdateSlider();
     }
     public IEnumerator BossToMenu()
     {
@@ -219,6 +217,16 @@ public class LevelCounter : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         //LevelMenager.Instance.Level = level;
-       // LevelMenager.Instance.UpdateSlider();
+        // LevelMenager.Instance.UpdateSlider();
+    }
+    public void ToMenuButton()
+    {
+        level += 1;
+        subLevel = 1;
+
+        SceneManager.LoadScene("MainMenu Test", LoadSceneMode.Single);
+
+        LevelMenager.Instance.Level = level;
+        LevelMenager.Instance.UpdateSlider();
     }
 }

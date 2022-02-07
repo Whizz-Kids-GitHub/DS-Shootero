@@ -19383,7 +19383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  hp: 5
+  hp: 10
   startHp: 0
   isBoss: 0
   hitColor: {r: 1, g: 0, b: 0, a: 1}

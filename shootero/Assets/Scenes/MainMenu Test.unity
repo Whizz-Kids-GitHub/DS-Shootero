@@ -541,10 +541,6 @@ MonoBehaviour:
   wasClicked: 0
   isClickable: 1
   cameraShake: 0.05
-  animators:
-  - {fileID: 490626731}
-  - {fileID: 892913067}
-  - {fileID: 1896130038}
   sounds:
   - {fileID: 270736548}
   - {fileID: 270736547}
@@ -990,6 +986,7 @@ GameObject:
   - component: {fileID: 490626727}
   - component: {fileID: 490626730}
   - component: {fileID: 490626731}
+  - component: {fileID: 490626732}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1114,6 +1111,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &490626732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490626726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8da5098f348a9a4cbe8e0a3d9c2061d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &495313033
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,10 +11882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e59be2bd9e685408902e03523fbcbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopAnimator: {fileID: 1748073876}
-  isClickable: 0
-  startGameSystem: {fileID: 0}
-  settingsSystem: {fileID: 0}
 --- !u!1 &1756108293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12166,7 +12171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5443069675920361955, guid: a64f7ac1e9c6b6c42ac003fff90a68d4, type: 3}
       propertyPath: level
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a64f7ac1e9c6b6c42ac003fff90a68d4, type: 3}

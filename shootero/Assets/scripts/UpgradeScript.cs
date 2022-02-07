@@ -28,7 +28,7 @@ public class UpgradeScript : MonoBehaviour
         UpgradeRarity(level);
     }
 
-    public void UpgradeRarity(int lvl)
+    public void UpgradeRarity(int lvl) //to tu
     {
         Debug.Log(this.name);
         for (int i = 0; i < 3; i++)
