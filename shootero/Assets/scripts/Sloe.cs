@@ -46,13 +46,14 @@ public class Sloe : MonoBehaviour
             yield return null;
         }
         transform.localScale = new Vector3(0, 0, 0);
+        playerMovementToMouse.Instance.canMove = true;
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerMovement>())
         {
-            PlayerMovement.Instance.speedModifier = 0.5f;
+            playerMovementToMouse.Instance.canMove = false;
         }
     }
 }

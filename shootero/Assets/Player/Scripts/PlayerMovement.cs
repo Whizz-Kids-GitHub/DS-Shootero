@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
                 pHSlider.fillAmount += 0.01f;
             } 
         }
-        
+        /*
         oMoveInput.y = js.Vertical;
         oMoveInput.x = js.Horizontal;
 
@@ -209,6 +209,7 @@ public class PlayerMovement : MonoBehaviour
         {
             RightThruster.SetActive(false);
         }
+        */
     }
 
     void Death()
