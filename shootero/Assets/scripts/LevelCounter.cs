@@ -123,19 +123,19 @@ public class LevelCounter : MonoBehaviour
                 {
                     dificulty = 1;
 
-                    respMenager.RespawnEnemies(1, Random.Range(0, 2));//max 1
+                    respMenager.RespawnEnemies(1, Random.Range(0, 2));
                 }
                 else if (5 < level && level < 11)
                 {
                     dificulty = 2;
                     enemyStats = 5;
-                    respMenager.RespawnEnemies(1, Random.Range(0, 4));//max 3
+                    respMenager.RespawnEnemies(1, Random.Range(0, 4));
                 }
                 else if (10 < level && level < 16)
                 {
                     dificulty = 3;
                     enemyStats = 10;
-                    respMenager.RespawnEnemies(1, Random.Range(0, 7));//max 6 ale potem trzeba zmienic na 6 bo ten ostatni to mothership dla testow
+                    respMenager.RespawnEnemies(1, Random.Range(0, 7));
                 }
                 else if (15 < level && level < 20)
                 {

@@ -30,6 +30,7 @@ public class UpgradeScript : MonoBehaviour
 
     public void UpgradeRarity(int lvl)
     {
+        Debug.Log(this.name);
         for (int i = 0; i < 3; i++)
         {
             UgradeRaritySet(i, lvl);
@@ -65,7 +66,7 @@ public class UpgradeScript : MonoBehaviour
         UpgradeNum[i] = num;
         rarity[i] = rar;
 
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
 
         if (avaliable[Upgrades[rar].UpgradeStats[num].avaliableNum])
         {
