@@ -70,7 +70,7 @@ public class ShopBuySystem : MonoBehaviour
 
     public void BuyIt()
     {
-        if (boughtSkin[whichSkin] == false && money > skinPrice[whichSkin])
+        if (boughtSkin[whichSkin] == false && money >= skinPrice[whichSkin])
         {
             money -= skinPrice[whichSkin];
             boughtSkin[whichSkin] = true;
@@ -81,6 +81,9 @@ public class ShopBuySystem : MonoBehaviour
             shopSystem.BoughtUpdate(whichSkin);
 
             moneyCounter.Value = money;
+        } else
+        {
+            Debug.Log("Za ma³o pieniêdzy");
         }
     }
 

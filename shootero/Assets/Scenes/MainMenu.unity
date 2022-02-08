@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ddfc127589ab946b03b64c3f442fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 120
+  money: 100
   boughtSkin: 0000000000
   chosenSkin: 0
   skinPrice: 64000000c8000000f4010000e803000088130000
@@ -1288,6 +1288,7 @@ GameObject:
   - component: {fileID: 490626727}
   - component: {fileID: 490626730}
   - component: {fileID: 490626731}
+  - component: {fileID: 490626732}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1412,6 +1413,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &490626732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490626726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8da5098f348a9a4cbe8e0a3d9c2061d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &495313033
 GameObject:
   m_ObjectHideFlags: 0
@@ -6348,7 +6361,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -20.000002, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &505135091
 MonoBehaviour:
@@ -6374,7 +6387,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: f41df1b2494b7e243a284ad2b95b3eee, type: 3}
     m_FontSize: 81
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 81
     m_Alignment: 4

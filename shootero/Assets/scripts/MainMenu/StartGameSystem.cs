@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartGameSystem : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class StartGameSystem : MonoBehaviour
         sounds[1].Play();
         yield return new WaitForSeconds(2);
         black.SetBool("Start", true);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
     }
     private void FixedUpdate()
     {
