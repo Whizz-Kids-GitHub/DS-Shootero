@@ -21,9 +21,18 @@ public class ActiveController : MonoBehaviour
     public int maxAmount;
     public int maxAmountNow;
 
+    void Start()
+    { 
+        for (int num = 1; num < ButtonsInfo.Length; num++)
+        {
+            ButtonsInfo[num].price = TarkovPrices[num].price[ButtonsInfo[num].times];
+            ButtonsInfo[num].amount = TarkovPrices[num].amount[ButtonsInfo[num].times];
+        }
+    }
+    
     void SetButtonText(int num)
     {
-        if(num >= 0)
+        if(num > 0)
         {
             ButtonsInfo[num].priceButton.text = (ButtonsInfo[num].price.ToString());
             ButtonsInfo[num].amountButton.text = (ButtonsInfo[num].amount.ToString());
@@ -33,7 +42,7 @@ public class ActiveController : MonoBehaviour
     public void Buy(int num)
     {
 
-        if (ButtonsInfo[num].times <= maxAmount && ButtonsInfo[num].times <= maxAmountNow && (Num == num || (Num == 2 && num == 5)))
+        if (Coins >= ButtonsInfo[num].price && ButtonsInfo[num].times <= maxAmount && ButtonsInfo[num].times <= maxAmountNow && (Num == num || (Num == 2 && num == 5)))
         {
             Debug.Log(num);
 
