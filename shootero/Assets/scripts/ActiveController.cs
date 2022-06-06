@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ActiveController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class ActiveController : MonoBehaviour
     [SerializeField]
     public TarkovPrices[] TarkovPrices;
 
-    public int Coins;
+    public static int Coins;
 
     public int Num;
 
@@ -39,6 +40,16 @@ public class ActiveController : MonoBehaviour
         }
     }
 
+    void Set()
+    {
+        for (int i = 0; i < noumbs.Length; i++)
+        {
+            noumbs[i] = ButtonsInfo[i].amount;
+        }
+    }
+
+    public static int[] noumbs = new int[5];//static to another scene
+    
     public void Buy(int num)
     {
 
@@ -151,6 +162,8 @@ public class ActiveController : MonoBehaviour
         {
             SetButtonText(5);
         }
+
+        Set();
     }
 }
 

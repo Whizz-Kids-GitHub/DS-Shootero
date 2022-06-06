@@ -40,6 +40,14 @@ public class PlayerMovement : MonoBehaviour
     private static PlayerMovement instance;
     public static PlayerMovement Instance { get => instance; }
 
+    private int thisCoins;
+    public int coinsMod;
+
+    void AddCoins(int amount)
+    {
+        ActiveController.Coins += amount * coinsMod;
+    }
+
     private void Awake()
     {
         if(instance == null)
