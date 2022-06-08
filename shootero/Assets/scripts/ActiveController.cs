@@ -16,6 +16,7 @@ public class ActiveController : MonoBehaviour
     public TarkovPrices[] TarkovPrices;
 
     public static int Coins;
+    public  int CoinsBef;
 
     public int Num;
 
@@ -23,7 +24,9 @@ public class ActiveController : MonoBehaviour
     public int maxAmountNow;
 
     void Start()
-    { 
+    {
+        Coins += CoinsBef;
+        
         for (int num = 1; num < ButtonsInfo.Length; num++)
         {
             ButtonsInfo[num].price = TarkovPrices[num].price[ButtonsInfo[num].times];
@@ -33,7 +36,12 @@ public class ActiveController : MonoBehaviour
     
     void SetButtonText(int num)
     {
-        if(num > 0)
+        if(ButtonsInfo[num].times >= 6)
+        {
+            ButtonsInfo[num].priceButton.text = "Max";
+            ButtonsInfo[num].amountButton.text = "";
+        }
+        else if(num > 0)
         {
             ButtonsInfo[num].priceButton.text = (ButtonsInfo[num].price.ToString());
             ButtonsInfo[num].amountButton.text = (ButtonsInfo[num].amount.ToString());
@@ -62,8 +70,12 @@ public class ActiveController : MonoBehaviour
 
             ButtonsInfo[num].times += 1;
 
-            ButtonsInfo[num].price = TarkovPrices[num].price[ButtonsInfo[num].times];
-            ButtonsInfo[num].amount = TarkovPrices[num].amount[ButtonsInfo[num].times];
+            if (TarkovPrices[num].price.Length > ButtonsInfo[num].times)
+            {
+                ButtonsInfo[num].price = TarkovPrices[num].price[ButtonsInfo[num].times];
+                ButtonsInfo[num].amount = TarkovPrices[num].amount[ButtonsInfo[num].times];
+
+            }
 
             SetButtonText(num);
 
@@ -71,6 +83,8 @@ public class ActiveController : MonoBehaviour
             {
                 SetButtonText(5);
             }
+
+            Set();
         }
     }
     
@@ -162,8 +176,6 @@ public class ActiveController : MonoBehaviour
         {
             SetButtonText(5);
         }
-
-        Set();
     }
 }
 
